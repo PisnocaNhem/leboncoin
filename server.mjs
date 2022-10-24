@@ -4,9 +4,12 @@ import path from "path";
 import {fileURLToPath} from "url";
 // const path = require('node:path')
 
+// require dbConnect.js file from server directory
+import "./server/dbConnect.js";
+
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 
 
 // process.env>PORT || 
