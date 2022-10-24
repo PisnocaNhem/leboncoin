@@ -1,31 +1,15 @@
 import express from "express";
-import mysql from "mysql";
 import routes from "./routes/route.mjs";
 import path from "path";
 import {fileURLToPath} from "url";
 // const path = require('node:path')
 
+// require dbConnect.js file from server directory
+import "./server/dbConnect.js";
+
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-
-const mysqlConnection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "leboncoin",
-  multipleStatements: true,
-});
-
-mysqlConnection.connect((err) => {
-  if (!err) {
-    console.log("DB connection succeded.");
-  } else {
-    console.log("DB connection failed \n Error : " + JSON.stringify(err, undefined, 2));
-  }
-});
-
-
 
 
 // process.env>PORT || 
