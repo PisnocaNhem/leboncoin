@@ -2,7 +2,7 @@
 <%=  message %>
 <div class="container">
     <!-- catégorie -->
-    <div class="row">
+    <div class="row d-none d-sm-block">
         <ul class="col d-flex justify-content-center pt-2">
             <button type="button" class="btn btn-light">Immobilier</button>
             <button type="button" class="btn btn-light">Véhicule</button>
@@ -16,40 +16,8 @@
     </div>
     <!-- critére de recherche -->
     <form action="" method="POST">
-        <div class="row ms-0 me-0">
-            <div class="search d-flex h-100 flex-column align-items-around justify-content-center mb-3 pb-3">
 
-                <div class="row">
-                    <div class="col-12 col-sm-3 mt-2 ms-3">
-                        <select class="form-select w-75" aria-label="Default select example">
-                            <option selected>Catégorie</option>
-                            <option value="1">Maison</option>
-                            <option value="2">Immobilier</option>
-                            <option value="3">Mode</option>
-                            <option value="4">Jouet</option>
-                            <option value="5">Jeux video</option>
-                            <option value="6">Voiture</option>
-                        </select>
-                    </div>
-
-                    <div class="col col-sm-3 d-flex flex-row">
-                        <input class="input-group-text mt-2" type="search" placeholder="Que recherchez-vous"
-                            name="Localisation">
-                    </div>
-
-                    <div class="col col-sm-3">
-                        <input class="input-group-text mt-2" type="search" name="Localisation"
-                            placeholder="Saisissez une ville">
-                    </div>
-
-                    <!-- <div class="col col-sm-3">
-                        <input class="input-group-text mt-2" type="search" name=""
-                            placeholder="Prix">
-                    </div> -->
-
-                </div>
-            </div>
-        </div>
+        <%- include('./common/searchBar.ejs') %>
 
         <div class="row text-center justify-content-center">
             <button type="button" class="btn btn-outline mt-1" id="btnSearchPN">Recherche</button>
