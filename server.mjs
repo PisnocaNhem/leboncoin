@@ -4,6 +4,7 @@ import path from "path";
 import {fileURLToPath} from "url";
 
 import {createUser} from "./server/signup.js";
+import { getAll } from "./server/product.js";
 import { body, validationResult } from 'express-validator';
 
 
