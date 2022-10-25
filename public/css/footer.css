@@ -1,0 +1,8 @@
+footer{
+    height: 20vh;
+}
+
+footer img{
+    height: 70%;
+    object-fit: contain;
+}
