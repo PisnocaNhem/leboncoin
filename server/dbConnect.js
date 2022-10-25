@@ -1,20 +1,21 @@
-// on importe le module mysql
 import mysql from "mysql";
 
-// on crée une connexion à la base de données
-const mysqlConnection = mysql.createConnection({
+// function pour se connecter à la base de données
+
+export const mysqlConnection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
     database: "leboncoin",
-    multipleStatements: true,
+    multipleStatements: true
 });
 
-// on se connecte à la BDD et on affiche un message en cas de succès ou d'échec
+export function dbConnect() {
 mysqlConnection.connect((err) => {
     if (!err) {
-        console.log("DB connection succeded.");
+        console.log("Connecté à la base de données");
     } else {
-        console.log("DB connection failed \n Error : " + JSON.stringify(err, undefined, 2));
+        console.log("Connexion échouée");
     }
 });
+}
