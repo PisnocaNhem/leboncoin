@@ -7,7 +7,7 @@ import {Router} from "express";
   })
 
   routes.get("/signup", (req, res) => {
-    res.render("signup", {message: "Bienvenue sur la page d'inscription'. "});
+    res.render("signup", {title: "Sign Up !"});
   })
 
 

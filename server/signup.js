@@ -1,12 +1,19 @@
 import {dbConnect} from "../server/dbConnect.js";
 import {mysqlConnection} from "../server/dbConnect.js";
 import * as bcrypt from 'bcrypt';
+import { body, validationResult } from 'express-validator';
+
 // création d'un utilisateur en base de données
 export const createUser = (req, res) => {
-    console.log(req.body);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+    // récupération des données du formulaire
     const passwordHash = bcrypt.hashSync(req.body.password, 10);
+    // connexion à la base de données
     dbConnect();
-    if (req.body.email && req.body.username && req.body.password && req.body.password === req.body.password2) {
+    if (req.body.email && req.body.name && req.body.password && req.body.password === req.body.password2) {
         const {
             name,
             email,
@@ -29,6 +36,6 @@ export const createUser = (req, res) => {
             }
         });
     } else {
-        res.send("Les mots de passe ne correspondent pas.");
+        res.send("Un problème est suvenu.");
     };
 };
