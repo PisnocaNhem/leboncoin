@@ -6,10 +6,6 @@ import {Router} from "express";
     res.render("index", {message: ""});
   })
 
-  routes.get("/categorie", (req, res) => {
-    res.render("index", {message: ""});
-  })
-
   routes.get("/signup", (req, res) => {
     res.render("signup", {title: "Sign Up !"});
   })
