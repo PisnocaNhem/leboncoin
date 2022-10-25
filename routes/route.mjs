@@ -10,4 +10,8 @@ import {Router} from "express";
     res.render("index", {message: ""});
   })
 
+  routes.get("/signup", (req, res) => {
+    res.render("signup", {title: "Sign Up !"});
+  })
+
   export default routes;
