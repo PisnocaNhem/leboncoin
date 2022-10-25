@@ -7,6 +7,7 @@
 .bg-grey {
     background-color:#707070 ;
 }
+
 .bg-blue{
     background-color: #263D60;
 }
@@ -14,6 +15,121 @@
 .c-white{
     color: white;
 }
+
+.c-green{
+    color: green;
+}
+.c-grey{
+    color: #707070;
+}
+
+.fw-100{
+    font-weight: 100;
+}
+.fw-200{
+    font-weight: 200;
+}
+.fw-300{
+    font-weight: 300;
+}
+.fw-400{
+    font-weight: 400;
+}
+.fw-500{
+    font-weight: 500;
+}
+.fw-600{
+    font-weight: 600;
+}
+.fw-700{
+    font-weight: 700;
+}
+.fw-800{
+    font-weight: 800;
+}
+.fw-900{
+    font-weight: 900;
+}
+
+
+
+/******************** Carte produit ********************/
+
+.product-card{
+    border: solid 1px #707070;
+    border-radius: 5px;
+    width: 50% !important;
+}
+.product-card img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.card-price{
+    font-weight: bold;
+}
+
+@media screen and (max-width: 980px) {
+    .product-card{
+        width: 490px !important
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .product-card{
+        width: 350px !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .product-card{
+        width: 300px !important;
+    }
+}
+/* **************** */
+
+/******************** Détail produit ********************/
+
+
+.productDetailContainer{
+    max-width: 1000px;
+    margin: 0 auto;
+
+}
+
+.productDetailContainer img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.productDetailContainer h5{
+    font-size: 32px;
+}
+
+.productDetailContainer .price{
+    font-size: 24px;
+}
+
+.profilPicture{
+    border-radius: 50%;
+    width: 120px !important;
+    margin-right: 10px;
+}
+
+.productDetailContainer .resellerName{
+    font-size: 24px;
+}
+
+.productDetailContainer .buttn{
+    border: solid 1px #707070;
+    border-radius: 10px;
+    padding: 5px 35px;
+    margin-left: 10%;
+    font-size: 24px;
+}
+
+/* **************** */
 
 
 
