@@ -2,7 +2,7 @@ import express from "express";
 import routes from "./routes/route.mjs";
 import path from "path";
 import {fileURLToPath} from "url";
-
+import fetch from "node-fetch";
 import {createUser} from "./server/signup.js";
 import { getAll } from "./server/product.js";
 import { body, validationResult } from 'express-validator';
