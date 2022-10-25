@@ -4,12 +4,10 @@ import {mysqlConnection} from "../server/dbConnect.js";
 export const getAll = (req, res) => {
     console.log(req.body);
     dbConnect();
-        const query = `SELECT * FROM announcements JOIN users ON announcements.id_user = users.id JOIN categories ON announcements.id_cat = categories.id WHERE announcements.archivated_at IS NULL`;
+        const query = `SELECT type, description, photo, price, announcements.created_at, id_user, id_cat, users.name, mail, role, phone, validated_at, connected_at FROM announcements JOIN users ON announcements.id_user = users.id JOIN categories ON announcements.id_cat = categories.id WHERE announcements.archivated_at IS NULL`;
         mysqlConnection.query(query, (err, rows, fields) => {
             if (!err) {
-                res.redirect('/index')
-                res.send(rows);
-                
+            return rows
             } else {
                 console.log(err);
             }
