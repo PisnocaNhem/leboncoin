@@ -3,7 +3,11 @@ import {Router} from "express";
   const routes = new Router();
 
   routes.get("/", (req, res) => {
-    res.render("index", {message: "Bienvenue sur notre projet 'le bon coin'. "});
+    res.render("index", {message: ""});
+  })
+
+  routes.get("/categorie", (req, res) => {
+    res.render("index", {message: ""});
   })
 
   export default routes;

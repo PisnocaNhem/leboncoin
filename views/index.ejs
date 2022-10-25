@@ -1,4 +1,102 @@
-
 <%- include('./common/header.ejs') %>
 <%=  message %>
+<div class="container">
+    <!-- catégorie -->
+    <div class="row">
+        <ul class="col d-flex justify-content-center pt-2">
+            <button type="button" class="btn btn-light">Immobilier</button>
+            <button type="button" class="btn btn-light">Véhicule</button>
+            <button type="button" class="btn btn-light">Mode</button>
+            <button type="button" class="btn btn-light">Maison</button>
+            <button type="button" class="btn btn-light">Multimédia</button>
+            <button type="button" class="btn btn-light">Loisirs</button>
+            <button type="button" class="btn btn-light">Professionnel</button>
+            <button type="button" class="btn btn-light">Divers</button>
+        </ul>
+    </div>
+    <!-- critére de recherche -->
+    <form action="" method="POST">
+        <div class="row ms-0 me-0">
+            <div class="search d-flex h-100 flex-column align-items-around justify-content-center mb-3 pb-3">
+
+                <div class="row">
+                    <div class="col-12 col-sm-3 mt-2 ms-3">
+                        <select class="form-select w-75" aria-label="Default select example">
+                            <option selected>Catégorie</option>
+                            <option value="1">Maison</option>
+                            <option value="2">Immobilier</option>
+                            <option value="3">Mode</option>
+                            <option value="4">Jouet</option>
+                            <option value="5">Jeux video</option>
+                            <option value="6">Voiture</option>
+                        </select>
+                    </div>
+
+                    <div class="col col-sm-3 d-flex flex-row">
+                        <input class="input-group-text mt-2" type="search" placeholder="Que recherchez-vous"
+                            name="Localisation">
+                    </div>
+
+                    <div class="col col-sm-3">
+                        <input class="input-group-text mt-2" type="search" name="Localisation"
+                            placeholder="Saisissez une ville">
+                    </div>
+
+                    <!-- <div class="col col-sm-3">
+                        <input class="input-group-text mt-2" type="search" name=""
+                            placeholder="Prix">
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center justify-content-center">
+            <button type="button" class="btn btn-outline mt-1" id="btnSearchPN">Recherche</button>
+        </div>
+
+        <!-- affichage résultat de recherche card -->
+        <div class="row justify-content-center p-3 ms-0 me-0 mt-2">
+            <div class="col-sm-12">
+                <div class="card mb-4">
+                    <!-- substr ligne 15 retourne un segment de chaine de caractére -->
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            <img src="https://fakeimg.pl/400x300/?text=World&font=lobster" class="img-fluid rounded-start"
+                                alt="image produit">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">
+                                    <a href="">Titre de l'annonce</a>
+                                </h5>
+                                <p class="card-text"><small class="text-muted">Catégorie</small></p>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Labore rem sit dolore perspiciatis cum fuga hic? Corrupti eius ullam, fuga ad vitae voluptatum esse tenetur, voluptatem non officia consectetur temporibus!</p>
+                                    <p class="card-text"><large class="text-muted">19€</large></p>
+                                    <p class="card-text">Paris 
+                                        <small class="text-muted">
+                                        <!-- datediff() pour savoir la difference entre le postage et le jour -->
+                                        <!-- <?php $datetime1 = new DateTime($find->jobadd_date);
+                                                $datetime2 = new DateTime($datetime = 'now');
+                                                $difference = $datetime1->diff($datetime2);
+                                                if($difference->days == 0):
+                                                    echo 'Postée aujourd\'hui';
+                                                else:
+                                                echo 'Postée il y à '.$difference->days.' jour(s)';
+                                                endif;
+                                        ?> -->
+                                        Publié le 25/10/2022 à 11h03
+                                    </small>
+                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
 <%- include('./common/footer.ejs') %>
