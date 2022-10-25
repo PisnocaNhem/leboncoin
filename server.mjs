@@ -4,6 +4,7 @@ import path from "path";
 import {fileURLToPath} from "url";
 
 import {createUser} from "./server/signup.js";
+import {getAll} from "./server/product.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,6 +24,10 @@ app.use("/", routes)
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.post('/signUpCtrl', createUser); // crée un utilisateur
+app.get('/getAll', function(req, res){
+res.render('/', getAll(req, res))
+
+}) // récupere la liste des articles
 
 app.listen(PORT, () => {							
   console.log('Notre server est en marche sur, ', PORT);
