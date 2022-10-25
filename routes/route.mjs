@@ -3,7 +3,11 @@ import {Router} from "express";
   const routes = new Router();
 
   routes.get("/", (req, res) => {
-    res.render("index", { message: 'e'});
+    res.render("index", {message: ""});
+  })
+
+  routes.get("/categorie", (req, res) => {
+    res.render("index", {message: ""});
   })
 
   routes.get("/signup", (req, res) => {

@@ -3,6 +3,35 @@
     padding: 0;
 }
 
+#titleBrand {
+    color: #804B96;
+    font-weight: 750;
+}
+
+#btnDepose {
+    color: #263D60;
+}
+
+.search {
+    background-color: white;
+    border: 1px gray solid;
+    border-radius: 15px;
+}
+
+#btnSearchPN {
+    background-color: #804B96;
+    color: white;
+    border-radius: 20px;
+    border-color: #804B96;
+    font-weight:600;
+    width: 16rem;
+}
+
+#btnDeposerPN {
+    background-color: #263D60;
+    border-radius: 20px;
+}
+
 
 .bg-grey {
     background-color:#707070 ;
