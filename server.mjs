@@ -31,6 +31,7 @@ app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 app.post('/signUp',
+  body('name').isLength({ min: 3 }).withMessage(('Le nom doit contenir au moins 3 caractères')),
   body('email').isEmail().withMessage('Email invalide'),
   body('password').isLength({ min: 6 }).withMessage('Le mot de passe doit contenir au moins 6 caractères'),
   body('name').isLength({ min: 3 }).withMessage('Le nom doit contenir au moins 3 caractères'),

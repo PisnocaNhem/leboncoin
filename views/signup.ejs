@@ -1,8 +1,6 @@
 <%- include('./common/header.ejs') %>
 <div class="col-6 mx-auto my-5">
     <h1 class="text-primary text-center"><%=  title %></h1>
-    <!-- foreach pour afficher les erreurs une par une si l'erreur existe -->
-    <div class="text-center text-primary"> <%=  errors %> </div>
     <form class="mt-5 mb-5" action="/signUp" method="POST">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">

@@ -7,7 +7,7 @@ import {Router} from "express";
   })
 
   routes.get("/signup", (req, res) => {
-    res.render("signup", {title: "Sign Up !"});
+    res.render("signup", {title: "Sign Up !", errors: []});
   })
 
   export default routes;
