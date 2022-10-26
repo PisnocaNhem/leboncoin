@@ -10,4 +10,8 @@ import {Router} from "express";
     res.render("signup", {title: "Sign Up !"});
   })
 
+  routes.get("/bookmark", (req, res) => {
+    res.render("bookmark", {title: "Favori"});
+  })
+
   export default routes;
