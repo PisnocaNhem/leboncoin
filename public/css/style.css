@@ -80,6 +80,10 @@
     font-weight: 900;
 }
 
+.icon {
+    width: 32px;
+    padding-right: 8px;
+}
 
 
 /******************** Carte produit ********************/

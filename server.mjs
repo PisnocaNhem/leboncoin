@@ -38,7 +38,7 @@ app.post('/signUp',
   body('name').isLength({ min: 3 }).withMessage('Le nom doit contenir au moins 3 caractères'),
   body('name').isLength({ max: 20 }).withMessage('Le nom doit contenir au plus 20 caractères'),
   createUser
-); // crée un utilisateur
+);
 
 app.listen(PORT, () => {
   console.log('Notre server est en marche sur, ', PORT);
