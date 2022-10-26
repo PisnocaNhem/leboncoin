@@ -8,13 +8,10 @@ export const getBookMark = (req, res) =>
     mysqlConnection.query(query, (err, rows, fields) => {
         if (!err) {
             console.log(rows);
-            res.render("bookmark", {rows:rows})
+            res.render("bookmark", {rows: rows})
         } else {
             console.log('on passe dans le else')
         }
     })
-    res.render("bookmark", {
-        title: "Favori"
-    });
 
 }
