@@ -13,8 +13,5 @@ export const getBookMark = (req, res) =>
             console.log('on passe dans le else')
         }
     })
-    res.render("bookmark", {
-        title: "Favori"
-    });
 
 }
