@@ -10,6 +10,9 @@ import {
 } from "./server/signup.js";
 import { body, validationResult } from 'express-validator';
 
+import {  
+  getBookMark
+} from "./server/bookmark.js";
 
 const __filename = fileURLToPath(
   import.meta.url);
@@ -38,6 +41,11 @@ app.post('/signUp',
   createUser
 ); // crée un utilisateur
 
+app.get('/bookmark', getBookMark, (req, res) => {
+  res.render("bookmark", {title: "Favori"});
+})
+
 app.listen(PORT, () => {
   console.log('Notre server est en marche sur, ', PORT);
 });
+
