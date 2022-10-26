@@ -11,9 +11,7 @@ import {Router} from "express";
 
     res.render("index", {message: ""});
   })
-
-
-
+  
   // routes.get("/bookmark", (req, res) => {
   //   res.render("bookmark", {title: "Favori"});
   // })

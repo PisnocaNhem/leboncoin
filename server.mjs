@@ -30,6 +30,7 @@ app.use("/", routes)
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.get('/', getAll)
+app.get('/bookmark', getBookMark)
 app.get('/signup', (req, res) => {
     res.render('signup', { title: 'Sign Up!', messages: [] });
 })
@@ -42,10 +43,6 @@ app.post('/signUp',
   body('name').isLength({ max: 20 }).withMessage('Le nom doit contenir au plus 20 caractères'),
   createUser
 );
-
-app.get('/bookmark', getBookMark, (req, res) => {
-  res.render("bookmark", {title: "Favori"});
-})
 
 app.listen(PORT, () => {
   console.log('Notre server est en marche sur, ', PORT);
