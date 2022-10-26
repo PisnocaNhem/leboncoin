@@ -1,6 +1,5 @@
 
 <%- include('./common/header.ejs') %>
-<%=  message %>
 <div class="container">
     <!-- catégorie -->
     <div class="row d-none d-sm-block">
@@ -26,7 +25,14 @@
 
         <!-- affichage résultat de recherche card -->
         <div class="row justify-content-center p-3 ms-0 me-0 mt-2">
-            <%- include('./templates/product-card.ejs') %>
+
+            <% for (let i = 0; i < rows.length; i++) {  
+                const row = rows[i] %>
+            
+            <%- include('./templates/product-card.ejs', {announce: row}) %>
+
+            <% } %>
+            
         </div>
 
     </form>

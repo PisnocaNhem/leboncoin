@@ -27,7 +27,8 @@ app.use("/", routes)
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.post('/signUpCtrl', createUser); // crée un utilisateur
-app.get('/getAll', getAll) // récupere la liste des articles
+app.get('/', getAll)
+
 
 app.post('/signUp',
   body('email').isEmail().withMessage('Email invalide'),
