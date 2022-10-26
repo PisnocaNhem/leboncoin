@@ -1,13 +1,10 @@
 import express from "express";
 import routes from "./routes/route.mjs";
 import path from "path";
-import {
-  fileURLToPath
-} from "url";
-
-import {
-  createUser
-} from "./server/signup.js";
+import {fileURLToPath} from "url";
+import fetch from "node-fetch";
+import {createUser} from "./server/signup.js";
+import { getAll } from "./server/product.js";
 import { body, validationResult } from 'express-validator';
 
 
@@ -29,6 +26,9 @@ app.use("/", routes)
 // API Middlewares
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
+app.post('/signUpCtrl', createUser); // crée un utilisateur
+app.get('/', getAll)
+
 
 app.post('/signUp',
   body('name').isLength({ min: 3 }).withMessage(('Le nom doit contenir au moins 3 caractères')),
