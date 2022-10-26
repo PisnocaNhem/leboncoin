@@ -1,0 +1,149 @@
+<%- include('./common/header.ejs') %>
+
+
+
+
+
+<div class="container tm-mt-big tm-mb-big">
+    <div class="row">
+      <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="tm-bg-light tm-block tm-block-h-auto">
+          <div class="row">
+            <!-- Titre -->
+            <div class="col-12">
+              <h2 class="tm-block-title d-inline-block">Ajouter Une annonce</h2>
+            </div>
+            <!--  -->
+          </div>
+          <div class="row tm-edit-product-row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+
+              <!--  Formulaire  -->
+              <form  class="tm-edit-product-form" action="/addProduct" method="POST" enctype='multipart/form-data'>
+
+
+                <!--  Bouttons Radio  -->
+                <div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="offre">
+                    <label class="form-check-label" for="inlineRadio1">Offre</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="demande">
+                    <label class="form-check-label" for="inlineRadio2">Demande</label>
+                  </div>
+                </div>
+                <!-- ----------- -->
+                
+
+                <!-- Titre de l'annonce -->
+                <div class="form-group mb-3">
+                  <label
+                    for="title"
+                    >Titre de L'annonce
+                  </label>
+                  <input
+                    id="title"
+                    name="title"
+                    type="text"
+                    class="form-control validate"
+                    required
+                  />
+                </div>
+                <!-- ------- -->
+
+                <!-- Description du produit  -->
+                <div class="form-group mb-3">
+                  <label
+                    for="description"
+                    >Description du produit</label
+                  >
+                  <textarea
+                    class="form-control validate"
+                    name="description"
+                    id="description"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+                <!--  -->
+
+
+                <!-- Catégories  -->
+                <div class="form-group mb-3">
+                  <label
+                    for="category"
+                    >Catégorie</label
+                  >
+                  <select
+                    class="custom-select tm-select-accounts"
+                    id="id"
+                    name="id"
+                    
+                  >
+                    <option selected>Selectionnez une catégorie</option>
+                    <option value="1">Immobilier</option>
+                    <option value="2">Véhicules</option>
+                    <option value="3">Mode</option>
+                    <option value="4">Maison</option>
+                    <option value="5">Multimédia</option>
+                    <option value="6">Professionnel</option>
+                    <option value="7">Divers</option>
+                  </select>
+                </div>
+
+                <!--  -->
+
+                <!-- Prix  -->
+                <div class="row">
+                    <div class="form-group mb-3 col-xs-12 col-sm-6">
+                        <label
+                          for="expire_date"
+                          >Prix
+                        </label>
+                        <input
+                          id="price"
+                          name="price"
+                          type="text"
+                          class="form-control validate"
+                          data-large-mode="true"
+                        />
+                      </div>
+                </div>
+                
+                
+            </div>
+
+            
+            <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+              <div class="tm-product-img-dummy mx-auto">
+                <i
+                  class="fas fa-cloud-upload-alt tm-upload-icon"
+                  onclick="document.getElementById('fileInput').click();"
+                ></i>
+              </div>
+              <div class="custom-file mt-3 mb-3">
+                <input id="fileInput" type="file" name="photo" style="display:none;" />
+                <!-- <input
+                  type="button"
+                  class="btn btn-primary btn-block mx-auto"
+                  value="Ajouter une image"
+                  onclick="document.getElementById('fileInput').click();"
+                  name=""
+                /> -->
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block mx-auto">Publier</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<%- include('./common/footer.ejs') %>
