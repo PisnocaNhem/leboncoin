@@ -8,7 +8,7 @@ import { response } from "express";
 export const createUser = (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.render('signup', { title: "Attention !", messages : errors.array() });
     }
     // récupération des données du formulaire
     const passwordHash = bcrypt.hashSync(req.body.password, 10);

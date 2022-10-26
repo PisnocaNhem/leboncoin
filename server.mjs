@@ -26,9 +26,10 @@ app.use("/", routes)
 // API Middlewares
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
-app.post('/signUpCtrl', createUser); // crée un utilisateur
 app.get('/', getAll)
-
+app.get('/signup', (req, res) => {
+    res.render('signup', { title: 'Sign Up!', messages: [] });
+})
 
 app.post('/signUp',
   body('name').isLength({ min: 3 }).withMessage(('Le nom doit contenir au moins 3 caractères')),
