@@ -1,12 +1,21 @@
 <%- include('./common/header.ejs') %>
 <div class="col-6 mx-auto my-5">
-    <h1 class="text-primary text-center">Sign Up !</h1>
-    <form class="mt-5 mb-5" action="/signUpCtrl" method="POST">
+    <h1 class="text-primary text-center"><%=  title %></h1>
+    <!-- on boucle sur l'objet messages s'il existe avec Object.entries() -->
+    <% if (messages) { %>
+        <% Object.entries(messages).forEach(([key, value]) => { %>
+            <div class="alert alert-danger" role="alert">
+                <%= value.msg %>
+            </div>
+        <% }) %>
+    <% } %>
+    
+    <form class="mt-5 mb-5" action="/signUp" method="POST">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <input type="text" id="username" name="username" class="form-control" />
+                    <input type="text" id="name" name="name" class="form-control" />
                     <label class="form-label" for="form3Example1">Nom d'utilisateur</label>
                 </div>
             </div>

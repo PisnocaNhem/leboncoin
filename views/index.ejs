@@ -1,4 +1,45 @@
-
 <%- include('./common/header.ejs') %>
-<%=  message %>
+<div class="container">
+    <!-- catégorie -->
+    <div class="row d-none d-sm-block">
+        <ul class="col d-flex justify-content-center pt-2">
+            <button type="button" class="btn btn-light">Immobilier</button>
+            <button type="button" class="btn btn-light">Véhicule</button>
+            <button type="button" class="btn btn-light">Mode</button>
+            <button type="button" class="btn btn-light">Maison</button>
+            <button type="button" class="btn btn-light">Multimédia</button>
+            <button type="button" class="btn btn-light">Loisirs</button>
+            <button type="button" class="btn btn-light">Professionnel</button>
+            <button type="button" class="btn btn-light">Divers</button>
+        </ul>
+    </div>
+    <!-- critére de recherche -->
+    <form action="" method="POST">
+
+        <%- include('./common/searchBar.ejs') %>
+
+        <div class="row text-center justify-content-center">
+            <button type="button" class="btn btn-outline mt-1" id="btnSearchPN">Recherche</button>
+        </div>
+
+        <!-- affichage résultat de recherche card -->
+        <div class="row justify-content-center p-3 ms-0 me-0 mt-2">
+
+            <% if (rows.length == 0 || !rows) { %>
+            <h5 class="text-center">Aucune annonce ne correspond à vos critères</h5>
+            <% } else {%>
+
+            <% for (let i = 0; i < rows.length; i++) {  
+                const row = rows[i]
+                %>
+
+            <%- include('./templates/product-card.ejs', {announce: row}) %>
+
+            <% } }%>
+
+        </div>
+
+    </form>
+</div>
+
 <%- include('./common/footer.ejs') %>

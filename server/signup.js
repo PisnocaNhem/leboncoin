@@ -1,19 +1,27 @@
 import {dbConnect} from "../server/dbConnect.js";
 import {mysqlConnection} from "../server/dbConnect.js";
+import * as bcrypt from 'bcrypt';
+import { body, validationResult } from 'express-validator';
+import { response } from "express";
+
 // création d'un utilisateur en base de données
 export const createUser = (req, res) => {
-    console.log(req.body);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.render('signup', { title: "Attention !", messages : errors.array() });
+    }
+    // récupération des données du formulaire
+    const passwordHash = bcrypt.hashSync(req.body.password, 10);
+    // connexion à la base de données
     dbConnect();
-    if (req.body.email && req.body.username && req.body.password && req.body.password === req.body.password2) {
-        // on filtre les données reçues
+    if (req.body.email && req.body.name && req.body.password && req.body.password === req.body.password2) {
         const {
             name,
             email,
-            password,
             role = 1,
-            newletter = 0,
+            newletter = 1,
         } = req.body;
-        const query = `INSERT INTO users (name, mail, password, role, newsletter) VALUES ('${name}', '${email}', '${password}', '${role}', '${newletter}')`;
+        const query = `INSERT INTO users (name, mail, password, role, newsletter) VALUES ('${name}', '${email}', '${passwordHash}', '${role}', '${newletter}')`;
         mysqlConnection.query(query, (err, rows, fields) => {
             if (!err) {
                 res.send(rows);
@@ -21,10 +29,14 @@ export const createUser = (req, res) => {
                 if(req.body.password !== req.body.password2){
                     res.send("Les mots de passe ne correspondent pas");
                 }
-                // console.log(err);
+                // si les champs sont vides
+                if(req.body.email === "" || req.body.username === "" || req.body.password === ""){
+                    res.send("Veuillez remplir tous les champs");
+                }
+                console.log(err);
             }
         });
     } else {
-        res.send("Les mots de passe ne correspondent pas.");
+        res.send("Un problème est suvenu.");
     };
 };
