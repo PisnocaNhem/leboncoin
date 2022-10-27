@@ -46,11 +46,13 @@
                             <a class="nav-link active" aria-current="page" href="#"><img class="icon"
                                     src="https://img.icons8.com/ios/40/000000/chat-message.png" />Messages</a>
                         </li>
+                        <% if (session.email) { %>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
                                 href="<% if (session.email) { %>/bookmark<% } else { %>#<% } %>"><img class="icon"
                                     src="https://img.icons8.com/ios/40/000000/add-to-favorites.png" />Favoris</a>
                         </li>
+                        <% } %>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false"><img
