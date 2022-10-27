@@ -2,12 +2,13 @@ import {dbConnect} from "../server/dbConnect.js";
 import {mysqlConnection} from "../server/dbConnect.js";
 import * as bcrypt from 'bcrypt';
 import { body, validationResult } from 'express-validator';
+import { response } from "express";
 
 // création d'un utilisateur en base de données
 export const createUser = (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
+        return res.render('signup', { title: "Attention !", messages : errors.array(), session: req.session ?? null });
     }
     // récupération des données du formulaire
     const passwordHash = bcrypt.hashSync(req.body.password, 10);

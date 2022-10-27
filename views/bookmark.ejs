@@ -1,0 +1,22 @@
+<%- include('./common/header.ejs') %>
+
+<h2 class="text-center"><%=  title %></h2>
+
+<!-- affichage résultat de recherche card -->
+<div class="row justify-content-center p-3 ms-0 me-0 mt-2">
+        <% if (rows.length == 0 || !rows) { %>
+        <h5 class="text-center">Aucune annonce ne correspond à vos critères</h5>
+        <% } else {%>
+
+        <% for (let i = 0; i < rows.length; i++) {  
+                const row = rows[i]
+                %>
+
+        <%- include('./templates/product-card.ejs', {announce: row}) %>
+
+        <% } }%>
+
+</div>
+
+
+<%- include('./common/footer.ejs') %>

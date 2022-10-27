@@ -5,8 +5,11 @@ import {fileURLToPath} from "url";
 import fetch from "node-fetch";
 import {createUser} from "./server/signup.js";
 import { getAll } from "./server/product.js";
+import { getUser } from "./server/signin.js";
 import { body, validationResult } from 'express-validator';
+import session from 'express-session';
 
+import { getBookMark } from "./server/bookmark.js";
 
 const __filename = fileURLToPath(
   import.meta.url);
@@ -23,6 +26,7 @@ app.set("views", "views");
 app.use(express.static('public'));
 app.use("/", routes)
 
+
 // API Middlewares
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
@@ -32,16 +36,41 @@ app.get('/:page&title=:title&price=:price&zipcode=:zipcode', getAll)
 app.post('/', getAll)
 // app.post('/search', getWithFilter)
 // app.get('/search', getWithFilterAndOffset)
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
 
+// announcements
+// app.get('/', getAll);
+app.get('/', getAll);
+app.get('/bookmark', getBookMark);
+
+
+// users connexion and inscription
+app.get('/signup', (req, res) => {
+    res.render('signup', { title: 'Sign Up !', messages: [], session: req.session ?? null });
+})
+app.get('/signin', (req, res) => {
+    res.render('signin', { title: 'Sign In !', messages: [], session: req.session ?? null });
+})
+app.get('/parameters', (req, res) => {
+    res.render('parameters', { title: 'Paramètres du compte', messages: [], session: req.session ?? null });
+})
 
 app.post('/signUp',
-  body('email').isEmail().withMessage('Email invalide'),
+  body('name').isLength({ min: 3 }).withMessage(('Le nom doit contenir au moins 3 caractères')),
+  body('email').isEmail().withMessage('Email invalide').normalizeEmail().withMessage('Email invalide'),
   body('password').isLength({ min: 6 }).withMessage('Le mot de passe doit contenir au moins 6 caractères'),
   body('name').isLength({ min: 3 }).withMessage('Le nom doit contenir au moins 3 caractères'),
   body('name').isLength({ max: 20 }).withMessage('Le nom doit contenir au plus 20 caractères'),
   createUser
-); // crée un utilisateur
+);
+
+app.post('/signIn', getUser);
 
 app.listen(PORT, () => {
   console.log('Notre server est en marche sur, ', PORT);
 });
+
