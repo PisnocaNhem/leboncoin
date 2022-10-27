@@ -43,7 +43,7 @@
 
 
 </div>
-<% if (rowsCount[0].rowCount > 1) { %>
+<% if (Math.ceil(rowsCount[0].rowCount/5) > 1) { %>
 <%- include('./common/pagination.ejs', {rows: rows, queryParam: queryParam, rowsCount: rowsCount}) %>
 <% } %>
 <%- include('./common/footer.ejs') %>
