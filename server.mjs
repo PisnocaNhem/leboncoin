@@ -11,6 +11,8 @@ import {
   getBookMark
 } from "./server/bookmark.js";
 
+import {getDetail} from "./server/product.js";
+
 const __filename = fileURLToPath(
   import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,6 +32,7 @@ app.use("/", routes)
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.get('/', getAll)
+app.get('/detail/:id', getDetail)
 app.get('/bookmark', getBookMark)
 app.get('/signup', (req, res) => {
     res.render('signup', { title: 'Sign Up!', messages: [] });

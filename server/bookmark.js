@@ -9,7 +9,7 @@ export const getBookMark = (req, res) =>
         if (!err) {
             res.render("bookmark", {rows:rows})
         } else {
-            console.log('on passe dans le else')
+            console.log(err)
         }
     })
 
