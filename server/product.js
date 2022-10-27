@@ -13,7 +13,7 @@ export const getAll = (req, res) => {
     let zipCode = ''
     let page = ''
     let queryParam = []
-    const step = 1
+    const step = 5
 
 
     if  ( req.route.stack[0].method == 'post') {
@@ -47,18 +47,18 @@ export const getAll = (req, res) => {
 
     if (title != '' && price != '' && zipCode != '' && page === '') {
         
-        query = `SELECT id_announcement, type, title, categories.name AS cat_name, announcements.zipcode, description, photo, price, announcements.created_at, id_user, id_cat, users.name, mail, role, phone, validated_at, connected_at FROM announcements JOIN users ON announcements.id_user = users.id JOIN categories ON announcements.id_cat = categories.id WHERE announcements.archivated_at IS NULL LIMIT 1`;
+        query = `SELECT id_announcement, type, title, categories.name AS cat_name, announcements.zipcode, description, photo, price, announcements.created_at, id_user, id_cat, users.name, mail, role, phone, validated_at, connected_at FROM announcements JOIN users ON announcements.id_user = users.id JOIN categories ON announcements.id_cat = categories.id WHERE announcements.archivated_at IS NULL LIMIT 5`;
         query2 = `SELECT COUNT(*) AS rowCount FROM announcements`
         
 
 
     } else if (page != '') {
-        query = `SELECT id_announcement, type, title, categories.name AS cat_name, announcements.zipcode, description, photo, price, announcements.created_at, id_user, id_cat, users.name, mail, role, phone, validated_at, connected_at FROM announcements JOIN users ON announcements.id_user = users.id JOIN categories ON announcements.id_cat = categories.id WHERE announcements.archivated_at IS NULL AND announcements.title LIKE '%${title}%' AND announcements.price LIKE '%${price}%' AND announcements.zipcode LIKE '%${zipCode}%' LIMIT 1 OFFSET ${page*step}`;
+        query = `SELECT id_announcement, type, title, categories.name AS cat_name, announcements.zipcode, description, photo, price, announcements.created_at, id_user, id_cat, users.name, mail, role, phone, validated_at, connected_at FROM announcements JOIN users ON announcements.id_user = users.id JOIN categories ON announcements.id_cat = categories.id WHERE announcements.archivated_at IS NULL AND announcements.title LIKE '%${title}%' AND announcements.price LIKE '%${price}%' AND announcements.zipcode LIKE '%${zipCode}%' LIMIT 5 OFFSET ${page*step}`;
         query2 = `SELECT COUNT(*) AS rowCount FROM announcements  WHERE announcements.archivated_at IS NULL AND announcements.title LIKE '%${title}%' AND announcements.price LIKE '%${price}%' AND announcements.zipcode LIKE '%${zipCode}%'`
 
     } else {
 
-        query = `SELECT id_announcement, type, title, categories.name AS cat_name, announcements.zipcode, description, photo, price, announcements.created_at, id_user, id_cat, users.name, mail, role, phone, validated_at, connected_at FROM announcements JOIN users ON announcements.id_user = users.id JOIN categories ON announcements.id_cat = categories.id WHERE announcements.archivated_at IS NULL AND announcements.title LIKE '%${title}%' AND announcements.price LIKE '%${price}%' AND announcements.zipcode LIKE '%${zipCode}%' LIMIT 1`;
+        query = `SELECT id_announcement, type, title, categories.name AS cat_name, announcements.zipcode, description, photo, price, announcements.created_at, id_user, id_cat, users.name, mail, role, phone, validated_at, connected_at FROM announcements JOIN users ON announcements.id_user = users.id JOIN categories ON announcements.id_cat = categories.id WHERE announcements.archivated_at IS NULL AND announcements.title LIKE '%${title}%' AND announcements.price LIKE '%${price}%' AND announcements.zipcode LIKE '%${zipCode}%' LIMIT 5`;
         query2 = `SELECT COUNT(*) AS rowCount FROM announcements  WHERE announcements.archivated_at IS NULL AND announcements.title LIKE '%${title}%' AND announcements.price LIKE '%${price}%' AND announcements.zipcode LIKE '%${zipCode}%'`
     
     }

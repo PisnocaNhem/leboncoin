@@ -17,12 +17,12 @@ console.log(queryField)
 
                 <li class="page-item"><a class="page-link <%= queryParam[0]===1? 'disabled' : ' ' ;%>" id="page-previous" href="/<%=queryParam[0]-1%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>">Précédent</a></li>
                 
-                <% for (let i = 1; i <= rowsCount[0].rowCount; i++) {  %>
+                <% for (let i = 1; i <= Math.ceil(rowsCount[0].rowCount/5); i++) {  %>
                     
                     <li class="page-item"><a class="page-link <%= queryParam[0]===i? 'activated' : ' ' ;%>" href="/<%=i%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>"><%=i%></a></li>
                 <% } %>
 
-                <li class="page-item"><a class="page-link <%= queryParam[0] === rowsCount[0].rowCount? 'disabled' : ' ' ;%>" id="page-next" href="/<%=queryParam[0]+1%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>">Suivant</a></li>
+                <li class="page-item"><a class="page-link <%= queryParam[0] === Math.ceil(rowsCount[0].rowCount/5)? 'disabled' : ' ' ;%>" id="page-next" href="/<%=queryParam[0]+1%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>">Suivant</a></li>
             </ul>
         </nav>
     </div>
