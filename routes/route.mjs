@@ -15,10 +15,6 @@ import { checkForm, validate } from "../utils/validateFormProduct.js";
 
     res.render("index", {message: ""});
   })
-  
-  // routes.get("/bookmark", (req, res) => {
-  //   res.render("bookmark", {title: "Favori"});
-  // })
 
   routes.get("/addProduct", (req, res) => {
     res.render("addProduct", {message: "Ajoutez Une Annonce'. ", session: req.session ?? null  });

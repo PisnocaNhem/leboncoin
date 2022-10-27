@@ -168,6 +168,11 @@
     font-size: 24px;
 }
 
+#NotifierPN, #AppelerPN {
+    background-color: #804B96;
+    color: white;
+}
+
 /* **************** */
 
 

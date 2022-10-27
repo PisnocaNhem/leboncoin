@@ -10,8 +10,8 @@ import { getAll } from "./server/product.js";
 import { getUser } from "./server/signin.js";
 import { body, validationResult } from 'express-validator';
 import session from 'express-session';
-
 import { getBookMark } from "./server/bookmark.js";
+import {getDetail} from "./server/product.js";
 
 const __filename = fileURLToPath(
   import.meta.url);
@@ -54,6 +54,8 @@ app.get('/bookmark', getBookMark);
 
 
 // users connexion and inscription
+app.get('/detail/:id', getDetail)
+app.get('/bookmark', getBookMark)
 app.get('/signup', (req, res) => {
     res.render('signup', { title: 'Sign Up !', messages: [], session: req.session ?? null });
 })
