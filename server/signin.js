@@ -15,6 +15,7 @@ export const getUser = (req, res) => {
             } else {
                 req.session.loggedin = true;
                 req.session.email = req.body.email;
+                req.session.name = results[0].name;
                 res.redirect('/');
             }
         }
