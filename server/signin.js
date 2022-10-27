@@ -14,6 +14,7 @@ export const getUser = (req, res) => {
                 res.render('signin', { title: 'Sign In !', messages: 'Email ou mot de passe incorrect' });
             } else {
                 req.session.loggedin = true;
+                req.session.userId = results[0].id;
                 req.session.email = req.body.email;
                 req.session.name = results[0].name;
                 req.session.phone = results[0].phone;
