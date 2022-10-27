@@ -83,8 +83,8 @@ export const getAll = (req, res) => {
 }
 
 export const getDetail = (req, res) => {
-    console.log(req.body);
-    dbConnect();
+    // console.log(req.body);
+    // dbConnect();
         const query = `SELECT * FROM announcements LEFT JOIN users ON announcements.id_user = users.id WHERE id_announcement = '${req.params.id}';`;
         mysqlConnection.query(query, (err, rows) => {
             if (!err) {
