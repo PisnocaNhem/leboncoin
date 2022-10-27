@@ -4,6 +4,8 @@ import path from "path";
 import {fileURLToPath} from "url";
 import fetch from "node-fetch";
 import {createUser} from "./server/signup.js";
+import {createProduct} from "./server/addProduct.js";
+
 import { getAll } from "./server/product.js";
 import { getUser } from "./server/signin.js";
 import { body, validationResult } from 'express-validator';
@@ -21,6 +23,7 @@ export const step = 10
 // met en place le moteur de template
 app.set("view engine", "ejs");
 app.set("views", "views");
+
 
 // si on précise pas chemin, il va chercher dans le dossier node_modules
 app.use(express.static('public'));
