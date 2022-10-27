@@ -7,7 +7,7 @@ export const getBookMark = (req, res) =>
     const query = `SELECT * FROM bookmark INNER JOIN announcements ON bookmark.id_annoucement = announcements.id_announcement;`
     mysqlConnection.query(query, (err, rows, fields) => {
         if (!err) {
-            res.render("bookmark", {rows:rows})
+            res.render("bookmark", {rows:rows, session: req.session ?? null })
         } else {
             console.log('on passe dans le else')
         }
