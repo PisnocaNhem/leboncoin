@@ -6,11 +6,7 @@ import fetch from "node-fetch";
 import {createUser} from "./server/signup.js";
 import { getAll } from "./server/product.js";
 import { body, validationResult } from 'express-validator';
-
-import {  
-  getBookMark
-} from "./server/bookmark.js";
-
+import {getBookMark} from "./server/bookmark.js";
 import {getDetail} from "./server/product.js";
 
 const __filename = fileURLToPath(
