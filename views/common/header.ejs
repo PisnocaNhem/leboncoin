@@ -61,14 +61,11 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <% if (session.email) { %>
+                                <li><a class="dropdown-item" href="/parameters">Paramètres</a></li>
                                 <li><a class="dropdown-item" href="/deconnexion">Déconnexion</a></li>
                                 <% } else { %>
                                 <li><a class="dropdown-item" href="/signin">Connexion</a></li>
                                 <% } %>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Autres</a></li>
                             </ul>
                         </li>
                     </ul>

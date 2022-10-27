@@ -24,7 +24,6 @@ app.set("views", "views");
 
 // si on précise pas chemin, il va chercher dans le dossier node_modules
 app.use(express.static('public'));
-app.use("/", routes)
 
 
 // API Middlewares
@@ -34,6 +33,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use("/", routes)
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.post('/signUpCtrl', createUser); // crée un utilisateur
@@ -74,6 +74,8 @@ app.post('/signUp',
   body('name').isLength({ max: 20 }).withMessage('Le nom doit contenir au plus 20 caractères'),
   createUser
 );
+
+// app.post('/parameters', parameters);
 
 app.post('/signIn', getUser);
 
