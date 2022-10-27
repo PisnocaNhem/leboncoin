@@ -49,6 +49,9 @@ app.get('/signup', (req, res) => {
 app.get('/signin', (req, res) => {
     res.render('signin', { title: 'Sign In !', messages: [], session: req.session ?? null });
 })
+app.get('/parameters', (req, res) => {
+    res.render('parameters', { title: 'Paramètres du compte', messages: [], session: req.session ?? null });
+})
 
 app.post('/signUp',
   body('name').isLength({ min: 3 }).withMessage(('Le nom doit contenir au moins 3 caractères')),
