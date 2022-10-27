@@ -53,10 +53,10 @@ app.get('/bookmark', getBookMark);
 
 // users connexion and inscription
 app.get('/signup', (req, res) => {
-    res.render('signup', { title: 'Sign Up !', messages: [], session: req.session ?? null });
+    res.render('signup', { title: 'Inscrivez-vous !', messages: [], session: req.session ?? null });
 })
 app.get('/signin', (req, res) => {
-    res.render('signin', { title: 'Sign In !', messages: [], session: req.session ?? null });
+    res.render('signin', { title: 'Connectez-vous !', messages: [], session: req.session ?? null });
 })
 app.get('/parameters', (req, res) => {
     res.render('parameters', { title: 'Paramètres du compte', messages: [], session: req.session ?? null });
