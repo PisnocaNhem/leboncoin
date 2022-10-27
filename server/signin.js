@@ -16,6 +16,8 @@ export const getUser = (req, res) => {
                 req.session.loggedin = true;
                 req.session.email = req.body.email;
                 req.session.name = results[0].name;
+                req.session.phone = results[0].phone;
+                req.session.zipcode = results[0].zipcode;
                 res.redirect('/');
             }
         }
