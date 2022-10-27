@@ -1,5 +1,8 @@
 <%- include('../common/header.ejs') %>
-
+<%  let formatedDate = new Date(announcements.created_at)
+    let options = {weekday: "long", year: "numeric", month: "long", day: "2-digit"};
+    formatedDate = formatedDate.toLocaleDateString("fr-FR", options)
+%>
 <div class="productDetailContainer px-3">
     <img class="img-fluid" src="img/image.png" alt="">
 
@@ -21,7 +24,7 @@
         <div class=" w-100 resellerIdentity d-flex align-items-center ">
             <div class="  d-flex  flex-column">
                 <div class="resellerName"><%= announcements.name %></div>
-                <div class="memberSince c-grey">Membre depuis le <%= announcements.created_at %></div>
+                <div class="memberSince c-grey">Membre depuis le <%= formatedDate %></div>
             </div>
 
             <div class="d-flex flex-column flex-md-row">
