@@ -24,7 +24,7 @@ export const createUser = (req, res) => {
         const query = `INSERT INTO users (name, mail, password, role, newsletter) VALUES ('${name}', '${email}', '${passwordHash}', '${role}', '${newletter}')`;
         mysqlConnection.query(query, (err, rows, fields) => {
             if (!err) {
-                res.send(rows);
+                res.render('signin', { title: 'Connexion', confirmation: 'Inscription effectuée avec succès !', messages: '', session: req.session ?? null });
             } else {
                 if(req.body.password !== req.body.password2){
                     res.send("Les mots de passe ne correspondent pas");

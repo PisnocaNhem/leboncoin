@@ -6,6 +6,11 @@
         <%= messages %>
     </div>  
     <% } %>
+    <% if (confirmation.length > 0) { %>
+    <div class="alert alert-success mt-5" role="alert">
+        <%= confirmation %>
+    </div>  
+    <% } %>
     <form class="mt-5 mb-5" method="post">
         <!-- Email input -->
         <div class="form-outline mb-4">
