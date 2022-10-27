@@ -9,6 +9,7 @@ import {createProduct} from "./server/addProduct.js";
 import { getAll } from "./server/product.js";
 import { getUser } from "./server/signin.js";
 import { body, validationResult } from 'express-validator';
+import { update } from './server/parameters.js';
 import session from 'express-session';
 import { getBookMark } from "./server/bookmark.js";
 import {getDetail} from "./server/product.js";
@@ -57,10 +58,10 @@ app.get('/bookmark', getBookMark);
 app.get('/detail/:id', getDetail)
 app.get('/bookmark', getBookMark)
 app.get('/signup', (req, res) => {
-    res.render('signup', { title: 'Sign Up !', messages: [], session: req.session ?? null });
+    res.render('signup', { title: 'Inscrivez-vous !', messages: [], session: req.session ?? null });
 })
 app.get('/signin', (req, res) => {
-    res.render('signin', { title: 'Sign In !', messages: [], session: req.session ?? null });
+    res.render('signin', { title: 'Connectez-vous !', messages: [], session: req.session ?? null });
 })
 app.get('/parameters', (req, res) => {
     res.render('parameters', { title: 'Paramètres du compte', messages: [], session: req.session ?? null });
@@ -78,6 +79,15 @@ app.post('/signUp',
   body('name').isLength({ min: 3 }).withMessage('Le nom doit contenir au moins 3 caractères'),
   body('name').isLength({ max: 20 }).withMessage('Le nom doit contenir au plus 20 caractères'),
   createUser
+);
+
+app.post('/parameters', 
+body('name').isLength({ min: 3 }).withMessage(('Le nom doit contenir au moins 3 caractères')),
+body('email').isEmail().withMessage('Email invalide').normalizeEmail().withMessage('Email invalide'),
+body('phone').isLength({ min: 10 }).withMessage('Le numéro de téléphone doit contenir au moins 10 caractères'),
+body('zipcode').isLength({ min: 5 }).withMessage('Le code postal doit contenir au moins 5 caractères'),
+body('name').isLength({max: 20}).withMessage('Le nom doit contenir au plus 20 caractères'),
+update
 );
 
 app.post('/signIn', getUser);
