@@ -1,10 +1,11 @@
 <%- include('./common/header.ejs') %>
 <div class="col-4 mx-auto my-5">
     <h1 class="text-primary text-center"><%=  title %></h1>
-    <!-- on boucle sur l'objet messages s'il existe avec Object.entries() -->
+    <% if (messages.length > 0) { %>
     <div class="alert alert-danger mt-5" role="alert">
         <%= messages %>
-    </div>
+    </div>  
+    <% } %>
     <form class="mt-5 mb-5" method="post">
         <!-- Email input -->
         <div class="form-outline mb-4">
