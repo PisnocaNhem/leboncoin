@@ -1,9 +1,11 @@
 <%  let formatedDate = new Date(announce.created_at)
     let options = {weekday: "long", year: "numeric", month: "long", day: "2-digit"};
     formatedDate = formatedDate.toLocaleDateString("fr-FR", options)
+    console.log(announce)
 %>
 
-<div class="col-sm-12">
+<div class="col-sm-12"> 
+    
     <div class="card mb-4">
         <!-- substr ligne 15 retourne un segment de chaine de caractére -->
         <div class="row g-0">
@@ -14,7 +16,7 @@
             <div class="col-md-9">
                 <div class="card-body">
                     <h5 class="card-title fw-bold">
-                        <a href=""><%= announce.title %></a>
+                        <a href="/detail/<%= announce.id_announcement%>"><%= announce.title %></a>
                     </h5>
                     <p class="card-text"><small class="text-muted"><%= announce.cat_name %></small></p>
                     <p class="card-text"><%= announce.description %></p>

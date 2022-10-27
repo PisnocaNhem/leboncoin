@@ -14,18 +14,15 @@ console.log(queryField)
     <div class="container d-flex justify-content-center mt-3">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <% if (queryParam[0]!==1) {%>
-                <li class="page-item"><a class="page-link" href="/<%=queryParam[0]-1%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>">Précédent</a></li>
-                <% }%>
+
+                <li class="page-item"><a class="page-link <%= queryParam[0]===1? 'disabled' : ' ' ;%>" id="page-previous" href="/<%=queryParam[0]-1%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>">Précédent</a></li>
                 
                 <% for (let i = 1; i <= rowsCount[0].rowCount; i++) {  %>
                     
-                    <li class="page-item"><a class="page-link" href="/<%=i%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>"><%=i%></a></li>
+                    <li class="page-item"><a class="page-link <%= queryParam[0]===i? 'activated' : ' ' ;%>" href="/<%=i%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>"><%=i%></a></li>
                 <% } %>
 
-                    <%if (queryParam[0] !== rowsCount[0].rowCount){ %>
-                <li class="page-item"><a class="page-link" href="/<%=queryParam[0]+1%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>">Suivant</a></li>
-                    <% }%>
+                <li class="page-item"><a class="page-link <%= queryParam[0] === rowsCount[0].rowCount? 'disabled' : ' ' ;%>" id="page-next" href="/<%=queryParam[0]+1%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>">Suivant</a></li>
             </ul>
         </nav>
     </div>
