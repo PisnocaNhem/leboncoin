@@ -37,21 +37,22 @@ app.use(session({
 }));
 
 // announcements
-app.get('/', getAll)
-app.get('/bookmark', getBookMark)
+// app.get('/', getAll);
+app.get('/', getAll);
+app.get('/bookmark', getBookMark);
 
 
 // users connexion and inscription
 app.get('/signup', (req, res) => {
-    res.render('signup', { title: 'Sign Up !', messages: [] });
+    res.render('signup', { title: 'Sign Up !', messages: [], session: req.session ?? null });
 })
 app.get('/signin', (req, res) => {
-    res.render('signin', { title: 'Sign In !', messages: [] });
+    res.render('signin', { title: 'Sign In !', messages: [], session: req.session ?? null });
 })
 
 app.post('/signUp',
   body('name').isLength({ min: 3 }).withMessage(('Le nom doit contenir au moins 3 caractères')),
-  body('email').isEmail().withMessage('Email invalide'),
+  body('email').isEmail().withMessage('Email invalide').normalizeEmail().withMessage('Email invalide'),
   body('password').isLength({ min: 6 }).withMessage('Le mot de passe doit contenir au moins 6 caractères'),
   body('name').isLength({ min: 3 }).withMessage('Le nom doit contenir au moins 3 caractères'),
   body('name').isLength({ max: 20 }).withMessage('Le nom doit contenir au plus 20 caractères'),

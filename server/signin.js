@@ -8,7 +8,7 @@ import { response } from "express";
 export const getUser = (req, res) => {
     console.log(req.body);
     dbConnect();
-        // query to verify user and password in database and start express session if ok
+        // requête pour vérifier si l'utilisateur existe
         mysqlConnection.query('SELECT * FROM users WHERE mail = ?', [req.body.email], async (error, results) => {
             if (results.length == 0 || !(await bcrypt.compare(req.body.password, results[0].password))) {
                 res.render('signin', { title: 'Sign In !', messages: 'Email ou mot de passe incorrect' });
