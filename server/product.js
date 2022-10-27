@@ -45,10 +45,6 @@ export const getAll = (req, res) => {
 
     }
 
-    console.log('param',queryParam)
-
-
-console.log('page', page)
     if (title != '' && price != '' && zipCode != '' && page === '') {
         
         query = `SELECT type, title, categories.name AS cat_name, announcements.zipcode, description, photo, price, announcements.created_at, id_user, id_cat, users.name, mail, role, phone, validated_at, connected_at FROM announcements JOIN users ON announcements.id_user = users.id JOIN categories ON announcements.id_cat = categories.id WHERE announcements.archivated_at IS NULL LIMIT 1`;
@@ -57,9 +53,7 @@ console.log('page', page)
 
 
     } else if (page != '') {
-        console.log("ici")
         query = `SELECT type, title, categories.name AS cat_name, announcements.zipcode, description, photo, price, announcements.created_at, id_user, id_cat, users.name, mail, role, phone, validated_at, connected_at FROM announcements JOIN users ON announcements.id_user = users.id JOIN categories ON announcements.id_cat = categories.id WHERE announcements.archivated_at IS NULL AND announcements.title LIKE '%${title}%' AND announcements.price LIKE '%${price}%' AND announcements.zipcode LIKE '%${zipCode}%' LIMIT 1 OFFSET ${page*step}`;
-
         query2 = `SELECT COUNT(*) AS rowCount FROM announcements  WHERE announcements.archivated_at IS NULL AND announcements.title LIKE '%${title}%' AND announcements.price LIKE '%${price}%' AND announcements.zipcode LIKE '%${zipCode}%'`
 
     } else {
@@ -68,14 +62,13 @@ console.log('page', page)
         query2 = `SELECT COUNT(*) AS rowCount FROM announcements  WHERE announcements.archivated_at IS NULL AND announcements.title LIKE '%${title}%' AND announcements.price LIKE '%${price}%' AND announcements.zipcode LIKE '%${zipCode}%'`
     
     }
-console.log(query)
 
     mysqlConnection.query(query, (err, rows, fields) => {
         if (!err) {
             mysqlConnection.query(query2, (err, rowsCount, fields) => {
                 if (!err) {
-                    console.log('rows', rows)
-                    res.render("index", {rows: rows, rowsCount: rowsCount, queryParam: queryParam});
+                    console.log('e',req.session)
+                    res.render("index", {rows: rows, rowsCount: rowsCount, queryParam: queryParam, session: req.session ?? null});
                 } else {
                     console.log(err)
                 }

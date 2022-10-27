@@ -28,6 +28,12 @@ app.use("/", routes)
 
 
 // API Middlewares
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.post('/signUpCtrl', createUser); // crée un utilisateur
@@ -36,11 +42,7 @@ app.get('/:page&title=:title&price=:price&zipcode=:zipcode', getAll)
 app.post('/', getAll)
 // app.post('/search', getWithFilter)
 // app.get('/search', getWithFilterAndOffset)
-app.use(session({
-  secret: 'secret',
-  resave: true,
-  saveUninitialized: true
-}));
+
 
 // announcements
 // app.get('/', getAll);
