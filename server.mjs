@@ -27,7 +27,6 @@ app.set("views", "views");
 
 // si on précise pas chemin, il va chercher dans le dossier node_modules
 app.use(express.static('public'));
-app.use("/", routes)
 
 
 // API Middlewares
@@ -37,6 +36,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use("/", routes)
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.post('/signUpCtrl', createUser); // crée un utilisateur
