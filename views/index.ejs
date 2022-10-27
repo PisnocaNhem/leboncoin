@@ -1,5 +1,8 @@
 
 <%- include('./common/header.ejs') %>
+
+<!-- console.log(rowsCount[0].rowCount) -->
+
 <div class="container">
     <!-- catégorie -->
     <div class="row d-none d-sm-block">
@@ -15,24 +18,25 @@
         </ul>
     </div>
     <!-- critére de recherche -->
-    <form action="" method="POST">
+    <form action="/" method="post">
 
         <%- include('./common/searchBar.ejs') %>
 
         <div class="row text-center justify-content-center">
-            <button type="button" class="btn btn-outline mt-1" id="btnSearchPN">Recherche</button>
+            <button type="submit" class="btn btn-outline mt-1" id="btnSearchPN">Recherche</button>
         </div>
 
+    </form>
         <!-- affichage résultat de recherche card -->
         <div class="row justify-content-center p-3 ms-0 me-0 mt-2">
 
             <% if (rows.length == 0 || !rows) { %>
                 <h5 class="text-center">Aucune annonce ne correspond à vos critères</h5>
-            <% } else {%>
-            
-            <% for (let i = 0; i < rows.length; i++) {  
-                const row = rows[i]
-                 %>
+            <% } else {
+        
+                for (let i = 0; i < rows.length; i++) {  
+                    const row = rows[i]
+                %>
             
             <%- include('./templates/product-card.ejs', {announce: row}) %>
 
@@ -40,7 +44,9 @@
             
         </div>
 
-    </form>
-</div>
 
+</div>
+<% if (rowsCount[0].rowCount > 1) { %>
+<%- include('./common/pagination.ejs', {rows: rows, queryParam: queryParam, rowsCount: rowsCount}) %>
+<% } %>
 <%- include('./common/footer.ejs') %>

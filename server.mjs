@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 8082;
-
+export const step = 10
 // met en place le moteur de template
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -28,6 +28,10 @@ app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.post('/signUpCtrl', createUser); // crée un utilisateur
 app.get('/', getAll)
+app.get('/:page&title=:title&price=:price&zipcode=:zipcode', getAll)
+app.post('/', getAll)
+// app.post('/search', getWithFilter)
+// app.get('/search', getWithFilterAndOffset)
 
 
 app.post('/signUp',

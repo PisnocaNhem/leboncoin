@@ -1,0 +1,31 @@
+
+<% 
+if (queryParam.length === 3) {
+queryParam.unshift(1)
+}
+let queryField = queryParam.map(x => x == '' ? 'null' : x)
+queryField[0] = queryParam[0]
+queryParam[0]= queryParam[0] === 0 ? 1 : queryParam[0]
+console.log(queryParam)
+console.log(queryField)
+
+%>
+
+    <div class="container d-flex justify-content-center mt-3">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <% if (queryParam[0]!==1) {%>
+                <li class="page-item"><a class="page-link" href="/<%=queryParam[0]-1%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>">Précédent</a></li>
+                <% }%>
+                
+                <% for (let i = 1; i <= rowsCount[0].rowCount; i++) {  %>
+                    
+                    <li class="page-item"><a class="page-link" href="/<%=i%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>"><%=i%></a></li>
+                <% } %>
+
+                    <%if (queryParam[0] !== rowsCount[0].rowCount){ %>
+                <li class="page-item"><a class="page-link" href="/<%=queryParam[0]+1%>&title=<%=queryField[1]%>&price=<%=queryField[2]%>&zipcode=<%=queryField[3]%>">Suivant</a></li>
+                    <% }%>
+            </ul>
+        </nav>
+    </div>

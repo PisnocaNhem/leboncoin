@@ -1,4 +1,7 @@
-<% console.log %>
+<%  let formatedDate = new Date(announce.created_at)
+    let options = {weekday: "long", year: "numeric", month: "long", day: "2-digit"};
+    formatedDate = formatedDate.toLocaleDateString("fr-FR", options)
+%>
 
 <div class="col-sm-12">
     <div class="card mb-4">
@@ -15,7 +18,7 @@
                     </h5>
                     <p class="card-text"><small class="text-muted"><%= announce.cat_name %></small></p>
                     <p class="card-text"><%= announce.description %></p>
-                        <p class="card-text"><large class="text-muted"><%= announce.price %></large></p>
+                        <p class="card-text"><large class="text-muted"><%= announce.price %> €</large></p>
                         <p class="card-text"><%= announce.zipcode %> 
                             <small class="text-muted">
                             <!-- datediff() pour savoir la difference entre le postage et le jour -->
@@ -28,7 +31,7 @@
                                     echo 'Postée il y à '.$difference->days.' jour(s)';
                                     endif;
                             ?> -->
-                            <%= announce.created_at %>
+                            Publié le <%= formatedDate %>
                         </small>
                         </p>
                 </div>
