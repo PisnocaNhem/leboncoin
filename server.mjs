@@ -5,6 +5,8 @@ import {fileURLToPath} from "url";
 import fetch from "node-fetch";
 import {createUser} from "./server/signup.js";
 import {createProduct} from "./server/addProduct.js";
+import { upload } from "./server/uploadPhoto.js";
+import { checkForm, validate } from "./utils/validateFormProduct.js";
 
 import { getAll } from "./server/product.js";
 import { getUser } from "./server/signin.js";
@@ -43,10 +45,11 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.post('/signUpCtrl', createUser); // crée un utilisateur
 app.get('/', getAll)
 app.get('/:page&title=:title&price=:price&zipcode=:zipcode', getAll)
+
+
 app.post('/', getAll)
 // app.post('/search', getWithFilter)
 // app.get('/search', getWithFilterAndOffset)
-
 
 // announcements
 // app.get('/', getAll);
@@ -66,11 +69,16 @@ app.get('/signin', (req, res) => {
 app.get('/parameters', (req, res) => {
     res.render('parameters', { title: 'Paramètres du compte', messages: [], session: req.session ?? null });
 })
+app.get('/addProduct', (req, res) => {
+  res.render('addProduct', { title: 'Ajouter un produit', messages: [], erreurs: '', confirmation: '', session: req.session ?? null });
+});
 
 app.get('/deconnexion', (req, res) => {
     req.session.destroy();
     res.redirect('/signin');
 })
+
+app.post('/addProduct', upload.single('photo'), checkForm, validate, createProduct);
 
 app.post('/signUp',
   body('name').isLength({ min: 3 }).withMessage(('Le nom doit contenir au moins 3 caractères')),
