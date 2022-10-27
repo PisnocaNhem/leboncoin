@@ -55,7 +55,7 @@ app.get('/parameters', (req, res) => {
 
 app.get('/deconnexion', (req, res) => {
     req.session.destroy();
-    res.redirect('/');
+    res.redirect('/signin');
 })
 
 app.post('/signUp',

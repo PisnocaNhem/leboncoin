@@ -28,10 +28,16 @@
 }
 
 #btnDeposerPN {
+    height: 36px;
     background-color: #263D60;
     border-radius: 20px;
+    color: white;
 }
 
+/* .centered {
+    text-align: center;
+    padding-bottom: 30px;
+} */
 
 .bg-grey {
     background-color:#707070 ;
