@@ -6,12 +6,12 @@ import { response } from "express";
 
 // création d'un utilisateur en base de données
 export const getUser = (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     dbConnect();
         // requête pour vérifier si l'utilisateur existe
         mysqlConnection.query('SELECT * FROM users WHERE mail = ?', [req.body.email], async (error, results) => {
             if (results.length == 0 || !(await bcrypt.compare(req.body.password, results[0].password))) {
-                res.render('signin', { title: 'Sign In !', messages: 'Email ou mot de passe incorrect' });
+                res.render('signin', { title: 'Sign In !', messages: 'Email ou mot de passe incorrect', session: req.session ?? null, confirmation: '' });
             } else {
                 req.session.loggedin = true;
                 req.session.userId = results[0].id;

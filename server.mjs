@@ -1,5 +1,7 @@
 import express from "express";
 import routes from "./routes/route.mjs";
+import { createServer } from "http";
+import { Server } from "socket.io";
 import path from "path";
 import {fileURLToPath} from "url";
 import fetch from "node-fetch";
@@ -21,6 +23,7 @@ const __filename = fileURLToPath(
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
 const PORT = process.env.PORT || 8082;
 export const step = 10
 // met en place le moteur de template
@@ -99,6 +102,10 @@ update
 );
 
 app.post('/signIn', getUser);
+
+const httpServer = createServer();
+const io = new Server(httpServer, {
+});
 
 app.listen(PORT, () => {
   console.log('Notre server est en marche sur, ', PORT);

@@ -8,7 +8,7 @@ import { response } from "express";
 export const createUser = (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.render('signup', { title: "Attention !", messages : errors.array(), session: req.session ?? null });
+        return res.render('signup', { title: "Attention !", messages : errors.array(), confirmation: '', session: req.session ?? null });
     }
     // récupération des données du formulaire
     const passwordHash = bcrypt.hashSync(req.body.password, 10);
@@ -27,16 +27,16 @@ export const createUser = (req, res) => {
                 res.render('signin', { title: 'Connexion', confirmation: 'Inscription effectuée avec succès !', messages: '', session: req.session ?? null });
             } else {
                 if(req.body.password !== req.body.password2){
-                    res.send("Les mots de passe ne correspondent pas");
+                    res.render('signin', { title: 'Connexion', confirmation: '', messages: 'Les mots de passes ne correspondent pas', session: req.session ?? null });
                 }
                 // si les champs sont vides
                 if(req.body.email === "" || req.body.username === "" || req.body.password === ""){
-                    res.send("Veuillez remplir tous les champs");
+                    res.render('signin', { title: 'Connexion', confirmation: '', messages: 'Les champs ne doivent pas être vides', session: req.session ?? null });
                 }
                 console.log(err);
             }
         });
     } else {
-        res.send("Un problème est suvenu.");
+        res.render('signup', { title: 'Connexion', confirmation: '', messages: 'Les mots de passes ne correspondent pas', session: req.session ?? null });
     };
 };
