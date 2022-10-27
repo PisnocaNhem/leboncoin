@@ -46,7 +46,7 @@
                             <a class="nav-link active" aria-current="page" href="#"><img class="icon" src="https://img.icons8.com/ios/40/000000/add-to-favorites.png"/>Favoris</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/signin"><img class="icon" src="https://img.icons8.com/ios/40/000000/user.png"/>
+                            <a class="nav-link active" aria-current="page" href="<% if (session.email) { %>/parameters<% } else { %>/signin<% } %>"><img class="icon" src="https://img.icons8.com/ios/40/000000/user.png"/>
                             <!-- if req.session.loggedin existe alors on affiche le mail de l'utilisateur, sinon on affiche le mot "Compte" -->
                             <% if (session.email) { %>
                                 <%= session.email %>
