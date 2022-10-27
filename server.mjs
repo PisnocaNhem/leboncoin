@@ -53,6 +53,11 @@ app.get('/parameters', (req, res) => {
     res.render('parameters', { title: 'Paramètres du compte', messages: [], session: req.session ?? null });
 })
 
+app.get('/deconnexion', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+})
+
 app.post('/signUp',
   body('name').isLength({ min: 3 }).withMessage(('Le nom doit contenir au moins 3 caractères')),
   body('email').isEmail().withMessage('Email invalide').normalizeEmail().withMessage('Email invalide'),
