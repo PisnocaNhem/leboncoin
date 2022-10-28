@@ -1,6 +1,7 @@
 <%  let formatedDate = new Date(announce.created_at)
     let options = {weekday: "long", year: "numeric", month: "long", day: "2-digit"};
     formatedDate = formatedDate.toLocaleDateString("fr-FR", options)
+
 %>
 
 <div class="col-sm-12"> 
@@ -8,9 +9,10 @@
     <div class="card mb-4">
         <!-- substr ligne 15 retourne un segment de chaine de caractére -->
         <div class="row g-0">
-            <div class="col-md-3">
+            <div class="col-md-3 product-img-container">
                 <img src="/img/<%=announce.photo%>" class="img-fluid rounded-start"
                     alt="image produit">
+                    <!-- <img class="svgCoeur" src="/img/coeur.svg" alt=""> -->
             </div>
             <div class="col-md-9">
                 <div class="card-body">

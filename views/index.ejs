@@ -4,11 +4,11 @@
     <!-- catégorie -->
     <div class="row d-none d-sm-block">
         <ul class="col d-flex justify-content-center pt-2">
-            <button type="button" class="btn btn-light"><a href="/category/1"> Immobilier </a></button>
-            <button type="button" class="btn btn-light"><a href="/category/2"> Véhicule </a></button>
-            <button type="button" class="btn btn-light"><a href="/category/3"> Mode </a></button>
-            <button type="button" class="btn btn-light"><a href="/category/4"> Maison </a></button>
-            <button type="button" class="btn btn-light"><a href="/category/5"> Multimédia </a></button>
+            <button type="button" class="<%= typeof id_cat !== 'undefined' && id_cat == '1' ? 'activeLink' :  ' ' %> btn btn-light"><a href="/category/1"> Immobilier </a></button>
+            <button type="button" class="<%= typeof id_cat !== 'undefined' && id_cat == '2' ? 'activeLink' :  ' ' %>  btn btn-light"><a href="/category/2"> Véhicule </a></button>
+            <button type="button" class="<%= typeof id_cat !== 'undefined' && id_cat == '3' ? 'activeLink' :  ' ' %>  btn btn-light"><a href="/category/3"> Mode </a></button>
+            <button type="button" class="<%= typeof id_cat !== 'undefined' && id_cat == '4' ? 'activeLink' :  ' ' %>  btn btn-light"><a href="/category/4"> Maison </a></button>
+            <button type="button" class="<%= typeof id_cat !== 'undefined' && id_cat == '5' ? 'activeLink' :  ' ' %>  btn btn-light"><a href="/category/5"> Multimédia </a></button>
             <!-- <button type="button" class="btn btn-light"><a href="/category/"> Loisirs </a></button> -->
             <!-- <button type="button" class="btn btn-light">Professionnel</button> -->
             <!-- <button type="button" class="btn btn-light">Divers</button> -->

@@ -215,3 +215,25 @@
     background-color: #263D60 !important;
     color: white !important;
 }
+
+.product-image-container{
+    position: relative;
+}
+
+.svgCoeur{
+    position: absolute;
+    width: 40px;
+    left: 5px;
+    top: 5px;
+}
+
+.svgCoeur:hover{
+cursor: pointer;
+}
+
+.activeLink{
+    background-color: #804B96 !important;
+}
+.activeLink a{
+    color: white !important;
+}
