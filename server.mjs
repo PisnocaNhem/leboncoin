@@ -18,6 +18,10 @@ import { update } from './server/parameters.js';
 import session from 'express-session';
 import { getBookMark } from "./server/bookmark.js";
 import {getDetail} from "./server/product.js";
+import getAllUsers from "./server/users.js";
+import {getAnnouncementsAndUsers} from "./server/announcements.js";
+import getStats from "./server/stats.js";
+
 
 const __filename = fileURLToPath(
   import.meta.url);
@@ -38,6 +42,8 @@ app.use('/detail', express.static('public'))
 app.use('/category', express.static('public'))
 app.use('/addProduct', express.static('public'))
 app.use('/update/:id/:modif', express.static('public'))
+app.use(express.static(__dirname + "/public"));
+
 
 // API Middlewares
 app.use(session({
@@ -81,6 +87,15 @@ app.get('/addProduct', (req, res) => {
   res.render('addProduct', { title: 'Ajouter un produit', messages: [], erreurs: '', confirmation: '', session: req.session ?? null });
 });
 
+// dashboard
+app.get('/dashboard', (req, res) => {
+  res.render('dashboard/dashboardMain', { title: 'Ajouter un produit', messages: [], erreurs: '', confirmation: '', session: req.session ?? null });
+});
+app.get('/dashboardUsers', getAllUsers);
+app.get('/dashboardAnnouncements', getAnnouncementsAndUsers);
+app.get('/dashboardMain', getStats);
+
+// deconnexion
 app.get('/deconnexion', (req, res) => {
     req.session.destroy();
     res.redirect('/signin');
