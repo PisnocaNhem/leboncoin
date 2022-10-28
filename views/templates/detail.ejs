@@ -9,7 +9,7 @@
     formatedDateUser = formatedDateUser.toLocaleDateString("fr-FR", options)
 %>
 
-<div class="productDetailContainer px-3">
+<div class="productDetailContainer px-3 mt-4">
     <img class="img-fluid" src="/img/<%=announcements.photo%>" alt="">
 
     <div class="descriptionContainer w-100 p-2">
@@ -19,7 +19,7 @@
         </div>
         <p class="price c-green fw-700"><%= announcements.price %> €</p>
         <p class="desc"><%= announcements.description %></p>
-        <span class="publiedAt c-grey">Publié le <%= formatedDate %></span>  <% if (session.userId === announcements.id_user) { %><span><a href="/update/<%=announcements.id_announcement%>/true">Modifier votre annonce</a></span> <% }%>
+        <span class="publiedAt c-grey">Publié le <%= formatedDate %></span>  <% if (session.userId === announcements.id_user) { %><span><a class="buttn" href="/update/<%=announcements.id_announcement%>/true">Modifier votre annonce</a></span> <% }%>
     </div>
 
 
