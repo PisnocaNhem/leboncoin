@@ -4,8 +4,9 @@ import { check, validationResult }  from 'express-validator';
 const validate = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        res.json(errors)
-    }
+        console.log(errors);
+            res.render('addProduct', { title: 'Ajouter un produit', messages: errors.array(), session: req.session ?? null });
+     }
     else {
         next();
     }

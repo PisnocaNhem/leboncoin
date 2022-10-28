@@ -34,15 +34,52 @@
 
 #btnDeposerPN {
     height: 36px;
-    background-color: #263D60;
+    /* background-color: #263D60; */
+    background-color: #804B96;
     border-radius: 20px;
     color: white;
 }
+
+/* animate from left to right, then disappears */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+}
+
+/* use the following code to animate the div */
+#slideInFromLeft {
+    position: absolute;
+    animation-name: slideInFromLeft;
+    animation-duration: 2.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    top: 26px;
+    right: 0;
+}
+
+.slideInFromLeft {
+    display: none;
+}
+
 
 /* .centered {
     text-align: center;
     padding-bottom: 30px;
 } */
+
+.mainColor {
+    color: #804B96;
+}
+
+.backGroundMainColor {
+    background-color: #804B96;
+}
 
 .bg-grey {
     background-color:#707070 ;

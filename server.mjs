@@ -1,10 +1,14 @@
 import express from "express";
 import routes from "./routes/route.mjs";
+import { createServer } from "http";
+import { Server } from "socket.io";
 import path from "path";
 import {fileURLToPath} from "url";
 import fetch from "node-fetch";
 import {createUser} from "./server/signup.js";
 import {createProduct} from "./server/addProduct.js";
+import { upload } from "./server/uploadPhoto.js";
+import { checkForm, validate } from "./utils/validateFormProduct.js";
 
 import { getAll, getFromCategory } from "./server/product.js";
 import { getUser } from "./server/signin.js";
@@ -19,6 +23,7 @@ const __filename = fileURLToPath(
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
 const PORT = process.env.PORT || 8082;
 export const step = 10
 // met en place le moteur de template
@@ -49,7 +54,6 @@ app.post('/', getAll)
 app.get('/category/:id', getFromCategory)
 
 
-
 // announcements
 // app.get('/', getAll);
 app.get('/', getAll);
@@ -63,16 +67,21 @@ app.get('/signup', (req, res) => {
     res.render('signup', { title: 'Inscrivez-vous !', messages: [], session: req.session ?? null });
 })
 app.get('/signin', (req, res) => {
-    res.render('signin', { title: 'Connectez-vous !', messages: [], session: req.session ?? null });
+    res.render('signin', { title: 'Connectez-vous !', messages: [], confirmation: '', session: req.session ?? null });
 })
 app.get('/parameters', (req, res) => {
     res.render('parameters', { title: 'Paramètres du compte', messages: [], session: req.session ?? null });
 })
+app.get('/addProduct', (req, res) => {
+  res.render('addProduct', { title: 'Ajouter un produit', messages: [], erreurs: '', confirmation: '', session: req.session ?? null });
+});
 
 app.get('/deconnexion', (req, res) => {
     req.session.destroy();
     res.redirect('/signin');
 })
+
+app.post('/addProduct', upload.single('photo'), checkForm, validate, createProduct);
 
 app.post('/signUp',
   body('name').isLength({ min: 3 }).withMessage(('Le nom doit contenir au moins 3 caractères')),
@@ -93,6 +102,10 @@ update
 );
 
 app.post('/signIn', getUser);
+
+const httpServer = createServer();
+const io = new Server(httpServer, {
+});
 
 app.listen(PORT, () => {
   console.log('Notre server est en marche sur, ', PORT);

@@ -1,5 +1,5 @@
 <%- include('./common/header.ejs') %>
-<div class="col-6 mx-auto my-5">
+<div class="col-10 col-md-8 col-lg-6 mx-auto my-5">
     <h1 class="text-primary text-center"><%=  title %></h1>
     <!-- on boucle sur l'objet messages s'il existe avec Object.entries() -->
     <% if (messages) { %>
@@ -12,13 +12,13 @@
     <form class="mt-5 mb-5" action="/signUp" method="POST">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">
-            <div class="col">
+            <div class="col-md-6">
                 <div class="form-outline">
                     <input type="text" id="name" name="name" class="form-control" />
                     <label class="form-label" for="form3Example1">Nom d'utilisateur</label>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-md-6">
                 <div class="form-outline mb-4">
                     <input type="email" id="email" name="email" class="form-control" />
                     <label class="form-label" for="form3Example3">Adresse e-mail</label>
@@ -26,13 +26,13 @@
             </div>
         </div>
         <div class="row mb-4">
-            <div class="col">
+            <div class="col-md-6">
                 <div class="form-outline">
                     <input type="password" id="password" name="password" class="form-control" />
                     <label class="form-label" for="form3Example4">Mot de passe</label>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-md-6">
                 <div class="form-outline mb-4">
                     <input type="password" id="password2" name="password2" class="form-control" />
                     <label class="form-label" for="form3Example4">Confirmez votre mot de passe</label>
@@ -43,31 +43,31 @@
         <!-- Checkbox -->
         <div class="form-check d-flex justify-content-center mb-4">
             <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-            <label class="form-check-label" for="form2Example33">
+            <label class="form-check-label mainColor" for="form2Example33">
                 S'inscrire à la newsletter
             </label>
         </div>
 
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Inscription</button>
+        <button type="submit" class="mainColor btn-primary btn btn-block mb-4">Inscription</button>
 
         <!-- Register buttons -->
         <div class="text-center">
-            <p>ou connectez-vous avec :</p>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-facebook-f"></i>
+            <p>ou enregistrez-vous avec :</p>
+            <button type="button" class="btn btn-floating mx-1">
+                <i class="mainColor fab fa-facebook-f"></i>
             </button>
 
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-google"></i>
+            <button type="button" class="btn btn-floating mx-1">
+                <i class="mainColor fab fa-google"></i>
             </button>
 
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-twitter"></i>
+            <button type="button" class="btn btn-floating mx-1">
+                <i class="mainColor fab fa-twitter"></i>
             </button>
 
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-github"></i>
+            <button type="button" class="btn btn-floating mx-1">
+                <i class="mainColor fab fa-github"></i>
             </button>
         </div>
     </form>
