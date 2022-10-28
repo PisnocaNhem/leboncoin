@@ -30,11 +30,15 @@ export const createProduct = (req, res) => {
         if (!err) {
             res.render('addProduct', { title: 'Ajouter un produit', messages: '', erreurs: '', confirmation: 'Produit ajouté avec succès', session: req.session ?? null });
             console.log("Produit ajouté");
+            
         } else {
             res.render('addProduct', { title: 'Ajouter un produit', messages: '', confirmation: '', erreurs: 'Erreur lors de l\'ajout du produit', session: req.session ?? null });
+            
             console.log("produit non ajouté", err);
+
         }
         // res.send("Validation effectuée avec succès");
     });
+ 
 };
 

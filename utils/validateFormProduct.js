@@ -6,7 +6,7 @@ const validate = (req, res, next) => {
     if (!errors.isEmpty()) {
         console.log(errors);
             res.render('addProduct', { title: 'Ajouter un produit', messages: errors.array(), session: req.session ?? null });
-     }
+    }
     else {
         next();
     }
@@ -20,6 +20,5 @@ check('price', 'Veuillez renseigner un prix').notEmpty().isInt().isLength({ min:
 check('zipcode', 'Veuillez renseigner un code postal').notEmpty().isNumeric().isLength({ min:3 , max: 5 }),
 check('id_cat', 'Veuillez Séléctionner une Catégorie').notEmpty().isInt().isLength({ min:1 , max: 1 }),
 ];
-
 
 export {validate, checkForm};
