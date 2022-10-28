@@ -11,6 +11,7 @@ import { upload } from "./server/uploadPhoto.js";
 import { checkForm, validate } from "./utils/validateFormProduct.js";
 
 import { getAll, getFromCategory } from "./server/product.js";
+import { getAll } from "./server/product.js";
 import { getUser } from "./server/signin.js";
 import { body, validationResult } from 'express-validator';
 import { update } from './server/parameters.js';
