@@ -9,7 +9,7 @@ const app = express();
 
 export const createProduct = (req, res) => {
     const photo= req.file.filename;
-    console.log(photo);
+    // console.log(photo);
     const {
         type,
         title,

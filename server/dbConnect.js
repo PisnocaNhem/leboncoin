@@ -11,13 +11,16 @@ export const mysqlConnection = mysql.createConnection({
 });
 
 export function dbConnect() {
-mysqlConnection.connect((err) => {
-    if (!err) {
-        console.log("Connexion à la base de données réussie");
-    } else {
-        console.log(err);
-        console.log("------------------------------------------------------------------------------");
-        console.log("Erreur lors de la connexion à la base de données");
-    }
-});
+// singleton pour se connecter à la base de données
+    if (!mysqlConnection._connectCalled) {
+        mysqlConnection.connect((err) => {
+            if (!err) {
+                console.log("Connected to database");
+            } else {
+                console.log("Connection failed", err);
+            }
+        });
+        mysqlConnection._connectCalled = true;
+    }   
 }
+

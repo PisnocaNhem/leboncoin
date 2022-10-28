@@ -18,7 +18,7 @@ export const getAll = (req, res) => {
 
     if  ( req.route.stack[0].method == 'post') {
 
-        console.log('req body :', req.body)
+        // console.log('req body :', req.body)
 
         title = req.body.searchPN ? req.body.searchPN : ''
         price = req.body.pricePN  ? req.body.pricePN : ''
@@ -26,7 +26,7 @@ export const getAll = (req, res) => {
         queryParam = [title, price, zipCode]
     } else {
         
-        console.log('eee',req.params)
+        // console.log('eee',req.params)
 
         page = req.params.page ?req.params.page : 0
         page = page - 1
@@ -67,7 +67,7 @@ export const getAll = (req, res) => {
         if (!err) {
             mysqlConnection.query(query2, (err, rowsCount, fields) => {
                 if (!err) {
-                    console.log('e',req.session)
+                    // console.log('e',req.session)
                     res.render("index", {rows: rows, rowsCount: rowsCount, queryParam: queryParam, session: req.session ?? null});
                 } else {
                     console.log(err)
