@@ -74,11 +74,14 @@
                                     Compte
                                     <% } %>
                             </a>
+                            <% console.log(session.role) %>
                             <ul class="dropdown-menu">
                                 <% if (session.email) { %>
                                 <li><a class="dropdown-item" href="/parameters">Paramètres</a></li>
                                 <li><a class="dropdown-item" href="/deconnexion">Déconnexion</a></li>
-                                <% } else { %>
+                                <% } if (session.email && session.role === 2) { %>
+                                <li><a class="dropdown-item" href="/dashboardMain">Dashboard</a></li>
+                                <% } if (!session.email) { %>
                                 <li><a class="dropdown-item" href="/signin">Connexion</a></li>
                                 <% } %>
                             </ul>
