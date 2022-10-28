@@ -5,7 +5,6 @@ import {fileURLToPath} from "url";
 import fetch from "node-fetch";
 import {createUser} from "./server/signup.js";
 import {createProduct} from "./server/addProduct.js";
-
 import { getAll } from "./server/product.js";
 import { getUser } from "./server/signin.js";
 import { body, validationResult } from 'express-validator';

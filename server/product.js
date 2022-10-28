@@ -91,9 +91,27 @@ export const getDetail = (req, res) => {
         mysqlConnection.query(query, (err, rows) => {
             if (!err) {
                 res.render("templates/detail", {announcements: rows[0], session: req.session ?? null});
+            } else {
+                console.log(err);
+            }
+        });
+
+}
+
+export const updateProduct = (req, res) => {
+    console.log(req.body);
+    dbConnect();
+        const query = `UPDATE announcements 
+        SET title='titre changer',description='desc changer',price='1000',zipcode='80080' 
+        WHERE id_announcement = '${req.params.id}';`;
+        mysqlConnection.query(query, (err, rows) => {
+            if (!err) {
+                res.render("/updateProduct", {announcements: rows[0], session: req.session ?? null});
                 console.log(rows);
             } else {
                 console.log(err);
             }
         });
+
 }
+
