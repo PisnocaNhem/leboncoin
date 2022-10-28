@@ -35,6 +35,7 @@ app.set("views", "views");
 app.use(express.static('public'));
 app.use('/detail', express.static('public'))
 app.use('/category', express.static('public'))
+app.use('/addProduct', express.static('public'))
 
 // API Middlewares
 app.use(session({
