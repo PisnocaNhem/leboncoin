@@ -1,4 +1,6 @@
 <%- include('../common/header.ejs') %>
+<% console.log(session) %>
+<%console.log(announcements)%>
 <%  
     let formatedDate = new Date(announcements.created_at_announcement)
     let options = {weekday: "long", year: "numeric", month: "long", day: "2-digit"};
@@ -17,7 +19,7 @@
         </div>
         <p class="price c-green fw-700"><%= announcements.price %> €</p>
         <p class="desc"><%= announcements.description %></p>
-        <span class="publiedAt c-grey">Publié le <%= formatedDate %></span>
+        <span class="publiedAt c-grey">Publié le <%= formatedDate %></span>  <% if (session.userId === announcements.id_user) { %><span><a href="/update/<%=announcements.id_announcement%>/true">Modifier votre annonce</a></span> <% }%>
     </div>
 
 

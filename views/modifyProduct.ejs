@@ -1,0 +1,127 @@
+<%- include('./common/header.ejs') %>
+<% console.log('eeeeeeeee',announcements)%>
+<div class="col-12 mx-auto my-5">
+  <div class="row">
+    <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+      <div class="">
+        <div class="row">
+          <!-- Titre -->
+          <div class="col-12">
+            <h2 class="tm-block-title d-inline-block">Modifier un produit</h2>
+          </div>
+          <% if (typeof messages !== 'undefined') { %>
+          <% Object.entries(messages).forEach(([key, value]) => { %>
+          <div class="alert alert-danger" role="alert">
+            <%= value.msg %>
+          </div>
+          <% }) %>
+          <% } %>
+          <% if (typeof confirmation !== 'undefined' && confirmation.length > 0) { %>
+          <div class="alert alert-success mt-5" role="alert">
+            <%= confirmation %>
+          </div>
+          <% } %>
+          <% if ( typeof erreurs !== 'undefined' && erreurs.length > 0) { %>
+          <div class="alert alert-danger mt-5" role="alert">
+            <%= erreurs %>
+          </div>
+          <% } %>
+          <!--  -->
+        </div>
+        <div class="row tm-edit-product-row">
+          <div class="col-xl-6 col-lg-6 col-md-12">
+
+            <!--  Formulaire  -->
+            <form class="tm-edit-product-form" method="POST" action="/update/<%=announcements.id_announcement %>" enctype='multipart/form-data'>
+
+
+              <!--  Bouttons Radio  -->
+              <div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="1" <%= announcements.type === 1 ? 'checked': '' %>>
+                  <label class="form-check-label" for="inlineRadio1">Offre</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="2" <%= announcements.type === 2 ? 'checked': '' %>>
+                  <label class="form-check-label" for="inlineRadio2">Demande</label>
+                </div>
+              </div>
+              <!-- ----------- -->
+
+
+              <!-- Titre de l'annonce -->
+
+              <div class="form-group mb-3">
+                <label for="title">Titre
+                </label>
+                <input id="title" name="title" type="text" class="form-control validate" value="<%=announcements.title%>" required />
+              </div>
+              <!-- ------- -->
+
+              <!-- Description du produit  -->
+              <div class="form-group mb-3">
+                <label for="description">Description</label>
+                <textarea class="form-control validate" name="description" id="description" rows="3" value="<%=announcements.description%>" placeholder="<%=announcements.description%>"
+                  required><%=announcements.description%></textarea>
+              </div>
+              <!--  -->
+
+
+              <!-- Catégories  -->
+              <div class="form-group mb-3">
+                <label for="category">Catégorie</label>
+                <select class="custom-select tm-select-accounts" id="id_cat" name="id_cat">
+                  <!-- <option>Selectionnez une catégorie</option> -->
+                  <option <%= announcements.id_cat == '1' ? 'selected': '' %> value="1">Immobilier</option>
+                  <option <%= announcements.id_cat == '2' ? 'selected': '' %> value="2">Véhicules</option>
+                  <option <%= announcements.id_cat == '3' ? 'selected': '' %> value="3">Mode</option>
+                  <option <%= announcements.id_cat == '4' ? 'selected': '' %> value="4">Maison</option>
+                  <option <%= announcements.id_cat == '5' ? 'selected': '' %> value="5">Multimédia</option>
+                  <option <%= announcements.id_cat == '6' ? 'selected': '' %> value="6">Professionnel</option>
+                  <!-- <option value="7">Divers</option> -->
+                </select>
+              </div>
+
+              <!--  -->
+
+              <!-- Prix  -->
+              <div class="row">
+                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                  <label for="expire_date">Prix
+                  </label>
+                  <input id="price" name="price" type="text" class="form-control validate" data-large-mode="true" value="<%=announcements.price%>" />
+                </div>
+                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                  <label for="zipcode">Code postal
+                  </label>
+                  <input id="zipcode" name="zipcode" type="text" class="form-control validate" data-large-mode="true" value="<%=announcements.zipcode%>"/>
+                </div>
+              </div>
+
+
+          </div>
+
+
+          <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+            <div class="tm-product-img-dummy mx-auto">
+              <i class="fas fa-cloud-upload-alt tm-upload-icon"
+                onclick="document.getElementById('fileInput').click();"></i>
+            </div>
+            <div class="custom-file mt-3 mb-3">
+              <input id="fileInput" type="file" name="photo" style="display:none;" />
+            </div>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block mx-auto">Mettre à jour</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<%- include('./common/footer.ejs') %>

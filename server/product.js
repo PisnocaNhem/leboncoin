@@ -84,30 +84,43 @@ export const getAll = (req, res) => {
 
 export const getDetail = (req, res) => {
     console.log(req.body);
+
+
+
     dbConnect();
-        const query = `SELECT announcements.id_announcement, announcements.title, announcements.description, announcements.photo, announcements.price, announcements.zipcode, announcements.created_at AS created_at_announcement, announcements.id_user, 
+        const query = `SELECT announcements.id_announcement, announcements.id_cat, announcements.type, announcements.title, announcements.description, announcements.photo, announcements.price, announcements.zipcode, announcements.created_at AS created_at_announcement, announcements.id_user, 
                     users.id, users.name, users.created_at AS created_at_user
         FROM announcements LEFT JOIN users ON announcements.id_user = users.id WHERE id_announcement = '${req.params.id}';`;
         mysqlConnection.query(query, (err, rows) => {
-            if (!err) {
-                res.render("templates/detail", {announcements: rows[0], session: req.session ?? null});
+            if (req.params.modif === "true") {
+                if (!err) {
+                    res.render("modifyProduct", {announcements: rows[0], session: req.session ?? null});
+                } else {
+                    console.log(err);
+                }
             } else {
-                console.log(err);
+                if (!err) {
+                    res.render("templates/detail", {announcements: rows[0], session: req.session ?? null});
+                } else {
+                    console.log(err);
+                }
             }
+           
         });
 
 }
 
 export const updateProduct = (req, res) => {
-    console.log(req.body);
+    console.log('eee',req.body);
+    console.log('params', req.params)
     dbConnect();
-        const query = `UPDATE announcements 
-        SET title='titre changer',description='desc changer',price='1000',zipcode='80080' 
-        WHERE id_announcement = '${req.params.id}';`;
+    
+        const query = `UPDATE announcements SET type = '${req.body.type}', title = '${req.body.title}', description = '${req.body.description}', photo = '${req.file.filename}', price = '${req.body.price}', zipcode = '${req.body.zipcode}', id_cat = '${req.body.id_cat}' WHERE announcements.id_announcement = ${req.params.id};`;
         mysqlConnection.query(query, (err, rows) => {
             if (!err) {
-                res.render("/updateProduct", {announcements: rows[0], session: req.session ?? null});
-                console.log(rows);
+                console.log('query', query)
+                res.redirect("/");
+
             } else {
                 console.log(err);
             }

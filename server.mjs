@@ -10,8 +10,8 @@ import {createProduct} from "./server/addProduct.js";
 import { upload } from "./server/uploadPhoto.js";
 import { checkForm, validate } from "./utils/validateFormProduct.js";
 
-import { getAll, getFromCategory } from "./server/product.js";
-import { getAll } from "./server/product.js";
+import { getAll, getFromCategory, updateProduct } from "./server/product.js";
+
 import { getUser } from "./server/signin.js";
 import { body, validationResult } from 'express-validator';
 import { update } from './server/parameters.js';
@@ -37,6 +37,7 @@ app.use(express.static('public'));
 app.use('/detail', express.static('public'))
 app.use('/category', express.static('public'))
 app.use('/addProduct', express.static('public'))
+app.use('/update/:id/:modif', express.static('public'))
 
 // API Middlewares
 app.use(session({
@@ -54,6 +55,8 @@ app.get('/:page&title=:title&price=:price&zipcode=:zipcode', getAll)
 
 app.post('/', getAll)
 app.get('/category/:id', getFromCategory)
+app.get('/update/:id/:modif', getDetail)
+app.post('/update/:id',upload.single('photo'), updateProduct)
 
 
 // announcements
