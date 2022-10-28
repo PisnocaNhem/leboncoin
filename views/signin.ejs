@@ -1,12 +1,12 @@
 <%- include('./common/header.ejs') %>
 <div class="col-10 col-md-6 col-lg-4 mx-auto my-5">
     <h1 class="text-primary text-center"><%=  title %></h1>
-    <% if (messages.length > 0) { %>
+    <% if (typeof messages !== 'undefined' && messages.length > 0) { %>
     <div class="alert alert-danger mt-5" role="alert">
         <%= messages %>
     </div>  
     <% } %>
-    <% if (confirmation.length > 0) { %>
+    <% if (typeof confirmation !== 'undefined' && confirmation.length > 0) { %>
     <div class="alert alert-success mt-5" id="slideInFromLeft" role="alert">
         <%= confirmation %>
     </div>  
