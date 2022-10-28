@@ -1,4 +1,50 @@
-
 <%- include('./common/header.ejs') %>
-<%=  message %>
+
+<div class="container">
+    <!-- catégorie -->
+    <div class="row d-none d-sm-block">
+        <ul class="col d-flex justify-content-center pt-2">
+            <button type="button" class="<%= typeof id_cat !== 'undefined' && id_cat == '1' ? 'activeLink' :  ' ' %> btn btn-light"><a href="/category/1"> Immobilier </a></button>
+            <button type="button" class="<%= typeof id_cat !== 'undefined' && id_cat == '2' ? 'activeLink' :  ' ' %>  btn btn-light"><a href="/category/2"> Véhicule </a></button>
+            <button type="button" class="<%= typeof id_cat !== 'undefined' && id_cat == '3' ? 'activeLink' :  ' ' %>  btn btn-light"><a href="/category/3"> Mode </a></button>
+            <button type="button" class="<%= typeof id_cat !== 'undefined' && id_cat == '4' ? 'activeLink' :  ' ' %>  btn btn-light"><a href="/category/4"> Maison </a></button>
+            <button type="button" class="<%= typeof id_cat !== 'undefined' && id_cat == '5' ? 'activeLink' :  ' ' %>  btn btn-light"><a href="/category/5"> Multimédia </a></button>
+            <!-- <button type="button" class="btn btn-light"><a href="/category/"> Loisirs </a></button> -->
+            <!-- <button type="button" class="btn btn-light">Professionnel</button> -->
+            <!-- <button type="button" class="btn btn-light">Divers</button> -->
+        </ul>
+    </div>
+    <!-- critére de recherche -->
+    <form action="/" method="post">
+
+        <%- include('./common/searchBar.ejs') %>
+
+        <div class="row text-center justify-content-center">
+            <button type="submit" class="btn btn-outline mt-1" id="btnSearchPN">Recherche</button>
+        </div>
+
+    </form>
+        <!-- affichage résultat de recherche card -->
+        <div class="row justify-content-center p-3 ms-0 me-0 mt-2">
+
+            <% if (rows.length == 0 || !rows) { %>
+                <h5 class="text-center">Aucune annonce ne correspond à vos critères</h5>
+            <% } else {
+        
+                for (let i = 0; i < rows.length; i++) {  
+                    const row = rows[i]
+                %>
+            
+            <%- include('./templates/product-card.ejs', {announce: row}) %>
+
+            <% } }%>
+
+        </div>
+
+
+</div>
+
+<% if (typeof rowsCount !== 'undefined') { if (Math.ceil(rowsCount[0].rowCount/5) > 1) { %>
+<%- include('./common/pagination.ejs', {rows: rows, queryParam: queryParam, rowsCount: rowsCount}) %>
+<% }} %>
 <%- include('./common/footer.ejs') %>

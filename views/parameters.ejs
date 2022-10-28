@@ -1,0 +1,55 @@
+<%- include('./common/header.ejs') %>
+<div class="col-4 mx-auto my-5">
+    <h1 class="text-primary text-center"><%=  title %></h1>
+    <% if (messages.length > 0) { %>
+    <div class="alert alert-success mt-5" id="slideInFromLeft" role="alert">
+        <%= messages %>
+    </div>
+    <% } %>
+    <form method="post" class="mt-5">
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="name" value="<%= session.name %>" name="name" class="form-control" placeholder="<%= session.name %>" />
+                    <label class="form-label" for="form6Example1">Nom d'utilisateur</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="phone" value="<%= session.phone %>" name="phone" class="form-control" placeholder="<%= session.phone %>" />
+                    <label class="form-label" for="form6Example2">Téléphone</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Text input -->
+        <div class="form-outline mb-4">
+            <input type="email" id="email" value="<%= session.email %>" name="email" class="form-control" placeholder="<%= session.email %>"/>
+            <label class="form-label" for="form6Example3">Adresse email</label>
+        </div>
+
+        <!-- Number input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="zipcode" value="<%= session.zipcode %>" name="zipcode" class="form-control" placeholder="<%= session.zipcode %>" />
+            <label class="form-label" for="form6Example6">Code postal</label>
+        </div>
+
+        <!-- Message input -->
+        <div class="form-outline mb-4">
+            <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+            <label class="form-label" for="form6Example7">Additional information</label>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="form-check d-flex justify-content-center mb-4">
+            <input class="form-check-input me-2" type="checkbox" value="" id="form6Example8" checked />
+            <label class="form-check-label" for="form6Example8"> Newsletter </label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Modifier les paramètres</button>
+    </form>
+
+</div>
+<%- include('./common/footer.ejs') %>

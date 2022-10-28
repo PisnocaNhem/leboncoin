@@ -1,0 +1,75 @@
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4 text-primary"><%= title %></h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    DataTable Example
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Utilisateur</th>
+                                <th>Titre</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Code postal</th>
+                                <th>Créée le</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Utilisateur</th>
+                                <th>Titre</th>
+                                <th>Description</th>
+                                <th>Prix</th>
+                                <th>Code postal</th>
+                                <th>Créée le</th>
+                                <th>Actions</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <% console.log(announcements)%>
+                            <!-- on boucle sur announcements pour afficher chaque annonces  -->
+                            <% for (let announcement of announcements) { %>
+                            <tr>
+                                <td><%= announcement.id %></td>
+                                <td><%= announcement.name %></td>
+                                <td><%= announcement.title %></td>
+                                <td><%= announcement.description.substr(1, 50) %></td>
+                                <td><%= announcement.price %></td>
+                                <td><%= announcement.zipcode %></td>
+                                <td><%= announcement.created_at %></td>
+                                <td>
+                                    <a href="/admin/announcements/<%= announcement.id %>/edit" class="btn btn-primary">Modifier</a>
+                                    <a href="/admin/announcements/<%= announcement.id %>/delete" class="btn btn-danger">Supprimer</a>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
