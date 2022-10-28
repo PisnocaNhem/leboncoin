@@ -1,7 +1,6 @@
 <%  let formatedDate = new Date(announce.created_at)
     let options = {weekday: "long", year: "numeric", month: "long", day: "2-digit"};
     formatedDate = formatedDate.toLocaleDateString("fr-FR", options)
-    console.log(announce)
 %>
 
 <div class="col-sm-12"> 
@@ -22,19 +21,7 @@
                     <p class="card-text"><%= announce.description %></p>
                         <p class="card-text"><large class="text-muted"><%= announce.price %> €</large></p>
                         <p class="card-text"><%= announce.zipcode %> 
-                            <small class="text-muted">
-                            <!-- datediff() pour savoir la difference entre le postage et le jour -->
-                            <!-- <?php $datetime1 = new DateTime($find->jobadd_date);
-                                    $datetime2 = new DateTime($datetime = 'now');
-                                    $difference = $datetime1->diff($datetime2);
-                                    if($difference->days == 0):
-                                        echo 'Postée aujourd\'hui';
-                                    else:
-                                    echo 'Postée il y à '.$difference->days.' jour(s)';
-                                    endif;
-                            ?> -->
-                            Publié le <%= formatedDate %>
-                        </small>
+                            <small class="text-muted"> Publié le <%= formatedDate %></small>
                         </p>
                 </div>
             </div>

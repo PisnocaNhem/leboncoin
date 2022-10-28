@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
     <!-- https://fonts.google.com/specimen/Roboto -->
     <link rel="stylesheet" href="css/fontawesome.min.css" />
     <!-- https://fontawesome.com/ -->
@@ -48,7 +46,8 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                         <li class="nav-item mt-1">
                             <a class="btn btn-outline" id="btnDeposerPN">
-                                    <img class="" src="https://img.icons8.com/ultraviolet/16/000000/plus-math.png" /> Déposer une annonce
+                                <img class="" src="https://img.icons8.com/ultraviolet/16/000000/plus-math.png" />
+                                Déposer une annonce
                             </a>
                         </li>
                     </ul>
@@ -66,13 +65,13 @@
                         <% } %>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false"><img
-                                class="icon" src="https://img.icons8.com/ios/40/000000/user.png" />
+                                aria-expanded="false"><img class="icon"
+                                    src="https://img.icons8.com/ios/40/000000/user.png" />
                                 <% if (session.email) { %>
-                                    <%= session.name %>
-                                    <% } else { %>
-                                    Compte
-                                    <% } %>
+                                <%= session.name %>
+                                <% } else { %>
+                                Compte
+                                <% } %>
                             </a>
                             <ul class="dropdown-menu">
                                 <% if (session.email) { %>
