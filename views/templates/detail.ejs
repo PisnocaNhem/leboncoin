@@ -1,8 +1,12 @@
 <%- include('../common/header.ejs') %>
-<%  let formatedDate = new Date(announcements.created_at)
+<%  
+    let formatedDate = new Date(announcements.created_at_announcement)
     let options = {weekday: "long", year: "numeric", month: "long", day: "2-digit"};
     formatedDate = formatedDate.toLocaleDateString("fr-FR", options)
+    let formatedDateUser = new Date(announcements.created_at_user)
+    formatedDateUser = formatedDateUser.toLocaleDateString("fr-FR", options)
 %>
+
 <div class="productDetailContainer px-3">
     <img class="img-fluid" src="img/image.png" alt="">
 
@@ -13,7 +17,7 @@
         </div>
         <p class="price c-green fw-700"><%= announcements.price %> €</p>
         <p class="desc"><%= announcements.description %></p>
-        <span class="publiedAt c-grey"><%= announcements.created_at %></span>
+        <span class="publiedAt c-grey">Publié le <%= formatedDate %></span>
     </div>
 
 
@@ -24,7 +28,7 @@
         <div class=" w-100 resellerIdentity d-flex align-items-center ">
             <div class="  d-flex  flex-column">
                 <div class="resellerName"><%= announcements.name %></div>
-                <div class="memberSince c-grey">Membre depuis le <%= formatedDate %></div>
+                <div class="memberSince c-grey">Membre depuis le <%= formatedDateUser %></div>
             </div>
 
             <div class="d-flex flex-column flex-md-row">

@@ -8,6 +8,11 @@
     font-weight: 750;
 }
 
+#btnFavPN {
+    background-color: #804B96;
+    color: white;
+}
+
 #btnDepose {
     color: #263D60;
 }

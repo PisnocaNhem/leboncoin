@@ -85,10 +85,13 @@ export const getAll = (req, res) => {
 export const getDetail = (req, res) => {
     console.log(req.body);
     dbConnect();
-        const query = `SELECT * FROM announcements LEFT JOIN users ON announcements.id_user = users.id WHERE id_announcement = '${req.params.id}';`;
+        const query = `SELECT announcements.id_announcement, announcements.title, announcements.description, announcements.photo, announcements.price, announcements.zipcode, announcements.created_at AS created_at_announcement, announcements.id_user, 
+                    users.id, users.name, users.created_at AS created_at_user
+        FROM announcements LEFT JOIN users ON announcements.id_user = users.id WHERE id_announcement = '${req.params.id}';`;
         mysqlConnection.query(query, (err, rows) => {
             if (!err) {
                 res.render("templates/detail", {announcements: rows[0], session: req.session ?? null});
+                console.log(rows);
             } else {
                 console.log(err);
             }
