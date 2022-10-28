@@ -6,7 +6,7 @@ import fetch from "node-fetch";
 import {createUser} from "./server/signup.js";
 import {createProduct} from "./server/addProduct.js";
 
-import { getAll } from "./server/product.js";
+import { getAll, getFromCategory } from "./server/product.js";
 import { getUser } from "./server/signin.js";
 import { body, validationResult } from 'express-validator';
 import { update } from './server/parameters.js';
@@ -29,6 +29,7 @@ app.set("views", "views");
 // si on précise pas chemin, il va chercher dans le dossier node_modules
 app.use(express.static('public'));
 app.use('/detail', express.static('public'))
+app.use('/category', express.static('public'))
 
 // API Middlewares
 app.use(session({
@@ -43,9 +44,10 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.post('/signUpCtrl', createUser); // crée un utilisateur
 app.get('/', getAll)
 app.get('/:page&title=:title&price=:price&zipcode=:zipcode', getAll)
+
 app.post('/', getAll)
-// app.post('/search', getWithFilter)
-// app.get('/search', getWithFilterAndOffset)
+app.get('/category/:id', getFromCategory)
+
 
 
 // announcements

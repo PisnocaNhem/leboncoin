@@ -6,8 +6,6 @@ queryParam.unshift(1)
 let queryField = queryParam.map(x => x == '' ? 'null' : x)
 queryField[0] = queryParam[0]
 queryParam[0]= queryParam[0] === 0 ? 1 : queryParam[0]
-console.log(queryParam)
-console.log(queryField)
 
 %>
 

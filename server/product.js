@@ -94,3 +94,16 @@ export const getDetail = (req, res) => {
             }
         });
 }
+
+export const getFromCategory = (req, res) => {
+    
+
+    const query = `SELECT * FROM announcements WHERE id_cat = ${req.params.id}`
+    mysqlConnection.query(query, (err, rows) => {
+        if (!err) {
+            res.render("index", {rows: rows, session: req.session ?? null})
+        } else {
+            console.log(err)
+        }
+    })
+}
